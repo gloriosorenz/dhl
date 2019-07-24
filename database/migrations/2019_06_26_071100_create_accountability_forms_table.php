@@ -15,11 +15,11 @@ class CreateAccountabilityFormsTable extends Migration
     {
         Schema::create('accountability_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('af_num')->nullable();
+            $table->string('af_num')->unique()->nullable();
             $table->string('designation');
-            $table->string('department');
             $table->date('issued_date');
 
+            $table->integer('departments_id')->unsigned()->nullable();
             $table->integer('request_forms_id')->unsigned()->nullable();
             $table->integer('equipment_id')->unsigned()->nullable();
             $table->integer('employees_id')->unsigned()->nullable();

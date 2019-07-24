@@ -67,3 +67,10 @@ function getStockLevel($quantity)
 
     return $stockLevel;
 }
+
+function randomNumber(){
+    $random = str_shuffle('1234567890');
+    $af_num = substr($random, 0, 6);
+
+    return $af_num;
+}

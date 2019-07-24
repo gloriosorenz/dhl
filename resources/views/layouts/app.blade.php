@@ -148,16 +148,15 @@
 
             // Bootstrap datepicker
             var optSimple = {
-            format: 'mm-dd-yyyy',
+            format: 'yyyy-mm-dd',
             todayHighlight: true,
             orientation: 'bottom right',
             autoclose: true,
             container: '#sandbox',
-            todayBtn: true
+            todayBtn: true,
             };
 
             $('.datepicker').datepicker(optSimple);
-
 
             // $('#date_1 .input-group.date').datepicker({
             //     todayBtn: "linked",
@@ -172,6 +171,15 @@
             $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
             })
+
+            // Clickable table row
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+
+            $('select2_demo_1').select2({
+                width: '100%'
+            });
 
         })
 

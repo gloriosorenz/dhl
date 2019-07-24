@@ -23,7 +23,7 @@ class EquipmentTableSeeder extends Seeder
                 'unit_cost' => 61567.72,
                 'date_purchased' =>'2019-03-01', 
                 'date_issued' =>'2019-05-14',
-                'quantity' =>10,
+                'quantity' =>9,
                 'brands_id' => 2, // HP
                 'equipment_types_id' => 1, // Laptop
             ],
@@ -37,7 +37,7 @@ class EquipmentTableSeeder extends Seeder
                 'unit_cost' => null,
                 'date_purchased' => null, 
                 'date_issued' => '2019-03-01',
-                'quantity' =>15,
+                'quantity' => 14,
                 'plan' => '800',
                 'calls' => 'Unli calls to Smart/Sun',
                 'text' => 'Unli text to Smart/Sun',

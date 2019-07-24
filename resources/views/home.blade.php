@@ -20,7 +20,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Accountability Form</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Create Form</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Create a Form</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-file-alt fa-2x text-gray-300"></i>
@@ -31,18 +31,18 @@
             </a>
           </div>
 
-          <!-- Add equipment -->
+          <!-- Movement Form -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <a href="{{ route('equipment.create') }}">
+            <a href="{{ route('movement_forms.create') }}">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Equipment</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Add a new Equipment</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Movement Form</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Create a Form</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-laptop fa-2x text-gray-300"></i>
+                      <i class="fas fa-arrows-alt fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -52,18 +52,18 @@
 
           
 
-          <!-- Add brand -->
+          <!-- Add equipment -->
           <div class="col-xl-3 col-md-6 mb-4">
-            <a href="{{ route('brands.create') }}">
+            <a href="{{ route('equipment.create') }}">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Brands</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Add a new brand</div>
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Equipment</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Add a new equipment</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-tag fa-2x text-gray-300"></i>
+                      <i class="fas fa-laptop fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -97,6 +97,118 @@
         </div>
 
         <!-- Content Row -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Accountability Forms Table -->
+                <div class="card shadow mb-4">
+                    <!-- Table Header -->
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="m-0 font-weight-bold text-primary">Accountability Forms</h6>
+                            </div>
+                            {{-- <div class="col-md-6">
+                                <a href="{{ route('accountability_forms.create') }}" class="btn btn-sm btn-success shadow-sm float-right"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Form</a>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <!-- Table Body -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    @if(count($acc_forms) > 0)
+                                    <thead>
+                                        <tr>
+                                            <th width="">ID</th>
+                                            <th width="">Employee</th>
+                                            <th width="">Equipment</th>
+                                            <th width="">IT Asset Tag</th>
+                                            <th width="">Date Issued</th>
+                                            {{-- <th class="text-center">Options</th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($acc_forms as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
+                                            <td>{{ $item->equipment->name }}</td>
+                                            <td>{{ $item->equipment->it_tag }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
+                                            {{-- <td class="text-center">
+                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
+                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
+                                            </td> --}}
+                                        </tr>
+                                        @endforeach
+                                    @else
+                                        <p>No forms found</p>
+                                    @endif
+                                </table>
+                                <div class="float-right">
+                                    {{ $acc_forms->links() }}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-lg-6">
+                <!-- Accountability Forms Table -->
+                <div class="card shadow mb-4">
+                    <!-- Table Header -->
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="m-0 font-weight-bold text-primary">Movement Forms</h6>
+                            </div>
+                            {{-- <div class="col-md-6">
+                                <a href="{{ route('accountability_forms.create') }}" class="btn btn-sm btn-success shadow-sm float-right"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Form</a>
+                            </div> --}}
+                        </div>
+                    </div>
+                    <!-- Table Body -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    @if(count($mov_forms) > 0)
+                                    <thead>
+                                        <tr>
+                                            <th width="">ID</th>
+                                            <th width="">Employee</th>
+                                            <th width="">Equipment</th>
+                                            <th width="">IT Asset Tag</th>
+                                            <th width="">Date Issued</th>
+                                            {{-- <th class="text-center">Options</th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($mov_forms as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
+                                            <td>{{ $item->equipment->name }}</td>
+                                            <td>{{ $item->equipment->it_tag }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
+                                            {{-- <td class="text-center">
+                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
+                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
+                                            </td> --}}
+                                        </tr>
+                                        @endforeach
+                                    @else
+                                        <p>No forms found</p>
+                                    @endif
+                                </table>
+                                <div class="float-right">
+                                    {{ $mov_forms->links() }}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {{-- <div class="row">
 

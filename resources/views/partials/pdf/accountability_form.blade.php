@@ -31,7 +31,7 @@
             <div class="col-lg-12">
                 <h4>
                     <small>DHL Supply Chain Inc.</small> <br>
-                    <strong>ACCOUNTABILITY SHEET</strong>
+                    <strong>ACCOUNTABILITY FORM</strong>
                 </h4>
             </div>
         </div>
@@ -90,7 +90,7 @@
         <br>
         <div class="row">
             <div class="col-xs-5">
-                <p>ISSUED BY::</p>
+                <p>ISSUED BY:</p>
                 <br>
                 <strong>
                 <p class="text-center">{{$af->admins->first_name}} {{$af->admins->last_name}}</p>

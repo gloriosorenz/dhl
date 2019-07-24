@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\MovementForm;
-use App\AccountabilityForm;
-use App\ReasonCode;
-
-class MovementFormsController extends Controller
+class ReasonCodes extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +13,7 @@ class MovementFormsController extends Controller
      */
     public function index()
     {
-        $mov_forms = MovementForm::all();
-
-        return view('movement_forms.index')
-            ->with('mov_forms', $mov_forms)
-            ;
+        //
     }
 
     /**
@@ -29,15 +21,9 @@ class MovementFormsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $af = AccountabilityForm::findOrFail($id);
-        $reason_code = ReasonCode::all();
-
-        return view('movement_forms.create')
-            ->with('af', $af)
-            ->with('reason_code', $reason_code)
-            ;
+        //
     }
 
     /**

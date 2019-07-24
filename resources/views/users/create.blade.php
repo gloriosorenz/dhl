@@ -8,7 +8,7 @@
         <h1 class="h3 mb-0 text-gray-800">Create a User</h1>
     </div>
 
-    <a class="btn btn-md btn-secondary" href="{{route('users.index')}}">Back</a>
+    <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 
 
     <div class="row">

@@ -26,6 +26,25 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        Forms
+    </div>
+
+    <!-- Accountability Forms -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('accountability_forms.index') }}">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Accoutability Forms</span></a>
+    </li>
+
+    <!-- IT Movement Forms -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('movement_forms.index') }}">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>IT Movement Forms</span></a>
+    </li>
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Functions
     </div>
     
@@ -41,6 +60,13 @@
         <a class="nav-link" href="{{ route('users.index') }}">
         <i class="fas fa-fw fa-users"></i>
         <span>Users</span></a>
+    </li>
+
+    <!-- Departments -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('departments.index') }}">
+        <i class="fas fa-fw fa-building"></i>
+        <span>Departments</span></a>
     </li>
 
     <!-- Equipment -->
@@ -62,24 +88,7 @@
     </li>
     
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Forms
-    </div>
-
-    <!-- Accountability Forms -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('accountability_forms.index') }}">
-        <i class="fas fa-fw fa-file-alt"></i>
-        <span>Accoutability Forms</span></a>
-    </li>
-
-    <!-- IT Movement Forms -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('accountability_forms.index') }}">
-        <i class="fas fa-fw fa-copy"></i>
-        <span>IT Movement Forms</span></a>
-    </li>
+    
 
     <!-- Forms -->  
     {{-- <li class="nav-item">
@@ -103,7 +112,7 @@
 
 
 
-    <!-- REmployee Functionalities -->
+    <!-- Employee Functionalities -->
     @elseif(Auth::user()->roles_id == 2)
     <!-- Divider -->
     <hr class="sidebar-divider my-0">

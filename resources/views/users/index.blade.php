@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
-                                <tr class="tr">
+                                <tr class='clickable-row' data-href='/users/{{$user->id}}'>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                                     <td>{{ $user->email }}</td>

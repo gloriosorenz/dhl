@@ -8,6 +8,7 @@ use App\AccountabilityForm;
 use App\RequestForm;
 use App\User;
 use App\Equipment;
+use App\Department;
 
 use PDF;
 use Carbon\Carbon;
@@ -37,12 +38,14 @@ class AccountabilityFormsController extends Controller
     public function create()
     {
         // $request = RequestForm::findOrFail($id);
-        $employees = User::all();
+        $employees = User::orderBy('first_name')->get();
         $equipment = Equipment::where('quantity', '!=', 0)->get();
+        $departments = Department::all();
 
         return view('accountability_forms.create')
             ->with('equipment', $equipment)
             ->with('employees', $employees)
+            ->with('departments', $departments)
             ;
     }
 
@@ -54,15 +57,25 @@ class AccountabilityFormsController extends Controller
      */
     public function store(Request $request)
     {
+        $af_num = randomNumber();
+
+        // Check duplicates
+        $check = AccountabilityForm::pluck('af_num');
+
+        foreach ($check as $num) {
+            if($af_num == $num){
+                
+            }
+        }
         // Create new accountability form
         $af = new AccountabilityForm;
         $af->request_forms_id = $request->get('request_forms_id');
         $af->equipment_id = $request->get('equipment_id');
-        $af->af_num = $request->get('af_num');
+        $af->af_num = $af_num;
         $af->designation = $request->get('designation');
-        $af->department = $request->get('department');
-        $af->issued_date = Carbon::now();
+        $af->issued_date = Carbon::parse($request->get('issued_date'));
 
+        $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
         $af->save();
@@ -81,7 +94,10 @@ class AccountabilityFormsController extends Controller
      */
     public function show($id)
     {
-        //
+        $af = AccountabilityForm::findOrFail($id);
+
+        return view('accountability_forms.show')
+            ->with('af', $af);
     }
 
     /**

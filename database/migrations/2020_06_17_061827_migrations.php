@@ -49,11 +49,27 @@ class Migrations extends Migration
                 ->references('id')->on('request_forms')->onDelete('cascade');
             $table->foreign('equipment_id')
                 ->references('id')->on('equipment')->onDelete('cascade');
+            $table->foreign('departments_id')
+                    ->references('id')->on('departments')->onDelete('cascade');
             $table->foreign('employees_id')
                     ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('admins_id')
                     ->references('id')->on('users')->onDelete('cascade');
         });
+
+        // Movement Form
+        // Schema::table('accountability_forms',function(Blueprint $table){
+        //     $table->foreign('request_forms_id')
+        //         ->references('id')->on('request_forms')->onDelete('cascade');
+        //     $table->foreign('equipment_id')
+        //         ->references('id')->on('equipment')->onDelete('cascade');
+        //     $table->foreign('departments_id')
+        //             ->references('id')->on('departments')->onDelete('cascade');
+        //     $table->foreign('employees_id')
+        //             ->references('id')->on('users')->onDelete('cascade');
+        //     $table->foreign('admins_id')
+        //             ->references('id')->on('users')->onDelete('cascade');
+        // });
 
     }
 

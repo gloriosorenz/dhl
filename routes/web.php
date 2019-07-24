@@ -31,12 +31,14 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('pdf/accountability_form/{id}', 'AccountabilityFormsController@pdfview');
 
 
-    Route::get('/accountability_forms/{id}','AccountabilityFormsController@create');
+    Route::get('/movement_forms/{id}/create','MovementFormsController@create');
 
     Route::resource('users', 'UsersController');
     Route::resource('equipment', 'EquipmentController');
     Route::resource('requests', 'RequestsController');
     Route::resource('accountability_forms', 'AccountabilityFormsController');
+    Route::resource('movement_forms', 'MovementFormsController');
     Route::resource('brands', 'BrandsController');
+    Route::resource('departments', 'DepartmentsController');
 
 });

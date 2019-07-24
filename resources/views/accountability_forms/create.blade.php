@@ -18,7 +18,7 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Create Accoountability Form</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Create Accountability Form</h6>
                         </div>
                     </div>
                 </div>
@@ -65,15 +65,14 @@
                             <input class="form-control" type="text" placeholder="Enter Designation" name="designation" required/>
                         </div>
                         <!-- Department -->
-                        <div class="col-sm-6 form-group">
+                        <div class="col-sm-6 form-group" text->
                             <label for="exampleFormControlSelect1">Department</label>
-                            <select class="form-control select2_demo_1" id="exampleFormControlSelect1" name="department">
-                                <optgroup label="Laptop/Desktop Brands">
-                                    <option value="IT Department">IT Department</option>
-                                    <option value="Finance Department">Finance Department</option>
-                                    <option value="Human Resource">Human Resource</option>
-                                    <option value="Legal Department">Legal Department</option>
-                                    <option value="Legal Department">UL</option>
+                            <select class="form-control select2_demo_1" id="exampleFormControlSelect1" name="departments_id">
+                                <option value="0" selected="true" disabled="True">Select Department</option>
+                                <optgroup label="Departments">
+                                    @foreach ($departments as $name)
+                                        <option value="{{ $name['id']}}">{{ $name['name']}}</option>
+                                    @endforeach
                                 </optgroup>
                             </select>
                         </div>
@@ -89,12 +88,12 @@
 
                                 <!-- To change date -->
                                 {{-- <div class="input-group date" data-provide="datepicker">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fas fa-calendar"></i>
-                                            </span>
-                                        </div>
-                                    <input type="text" class="form-control" placeholder="Enter Date" aria-describedby="inputGroupPrepend" name="issued_date" value="{{ Carbon\Carbon::now()->toDateString() }}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-describedby="inputGroupPrepend" name="issued_date" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>

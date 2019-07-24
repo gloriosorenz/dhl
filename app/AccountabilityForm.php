@@ -12,7 +12,7 @@ class AccountabilityForm extends Model
         'id',
         'af_num',
         'designation',
-        'department',
+        'departments_id',
         'issued_date',
         'admins_id',
         'employees_id',
@@ -39,5 +39,10 @@ class AccountabilityForm extends Model
     public function equipment()
     {
         return $this->belongsTo(Equipment::class, 'equipment_id');
+    }
+
+    public function departments()
+    {
+        return $this->belongsTo(Department::class, 'departments_id');
     }
 }
