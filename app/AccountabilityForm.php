@@ -18,6 +18,7 @@ class AccountabilityForm extends Model
         'employees_id',
         'request_forms_id',
         'equipment_id',
+        'form_statuses_id',
     ];
 
 
@@ -44,5 +45,10 @@ class AccountabilityForm extends Model
     public function departments()
     {
         return $this->belongsTo(Department::class, 'departments_id');
+    }
+
+    public function form_statuses()
+    {
+        return $this->belongsTo(FormStatus::class, 'form_statuses_id');
     }
 }

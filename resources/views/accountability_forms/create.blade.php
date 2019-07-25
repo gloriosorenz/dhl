@@ -42,7 +42,7 @@
                                     <select class="form-control select2_demo_1" name="employees_id">
                                         <option value="0" selected="true" disabled="True">Select User</option>
                                         @foreach ($employees as $item)
-                                            <option value="{{ $item['id']}}">{{ $item['first_name']}}</option>
+                                            <option value="{{ $item['id']}}">{{ $item['first_name']}} {{ $item['last_name']}}</option>
                                         @endforeach
                                     </select>
                                 </td>

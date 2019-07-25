@@ -18,7 +18,7 @@ class Migrations extends Migration
             $table->foreign('roles_id')
                 ->references('id')->on('roles')->onDelete('cascade');
             $table->foreign('departments_id')
-                ->references('id')->on('roles')->onDelete('cascade');
+                ->references('id')->on('departments')->onDelete('cascade');
         });
 
         // Equipment
@@ -55,6 +55,8 @@ class Migrations extends Migration
                     ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('admins_id')
                     ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('form_statuses_id')
+                    ->references('id')->on('form_statuses')->onDelete('cascade');
         });
 
         // Movement Form

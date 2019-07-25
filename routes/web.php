@@ -32,6 +32,7 @@ Route::group( ['middleware' => 'auth' ], function()
 
 
     Route::get('/movement_forms/{id}/create','MovementFormsController@create');
+    // Route::get('/accountability_forms/{id}/edit','AccountabilityFormsController@edit');
 
     Route::resource('users', 'UsersController');
     Route::resource('equipment', 'EquipmentController');

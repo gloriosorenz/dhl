@@ -23,6 +23,7 @@ class AccountabilityFormsTableSeeder extends Seeder
                 'equipment_id' => 2,
                 'employees_id' => 4,
                 'admins_id' => 1,
+                'form_statuses_id' => 2,
             ],
             [
                 'id' => 2, 
@@ -34,6 +35,7 @@ class AccountabilityFormsTableSeeder extends Seeder
                 'equipment_id' => 1,
                 'employees_id' => 3,
                 'admins_id' => 1,
+                'form_statuses_id' => 1,
             ],
 
         ];

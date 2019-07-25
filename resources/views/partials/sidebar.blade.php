@@ -55,11 +55,11 @@
         <span>Requests</span></a>
     </li>
 
-    <!-- Users -->
+    <!-- Users/Employees -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('users.index') }}">
         <i class="fas fa-fw fa-users"></i>
-        <span>Users</span></a>
+        <span>Employees</span></a>
     </li>
 
     <!-- Departments -->

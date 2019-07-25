@@ -39,7 +39,7 @@
                             </thead>
                             <tbody class="text-center">
                                 @foreach($brands as $item)
-                                <tr class='clickable-row' data-href='/brands/{{$item->id}}'>
+                                <tr>
                                     <td>
                                         @if($item->logo)
                                             <div class="img-wrap">

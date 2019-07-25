@@ -5,7 +5,7 @@
     
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Create a User</h1>
+        <h1 class="h3 mb-0 text-gray-800">Create an Employee</h1>
     </div>
 
     <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
@@ -18,7 +18,7 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">User Details</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Employee Details</h6>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                              <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Department</label>
-                                    <select class="form-control" name="users_id">
+                                    <select class="form-control select2_demo_1" name="users_id">
                                         <option value="0" selected="true" disabled="True">Select Department</option>
                                         @foreach ($department as $item)
                                             <option value="{{ $item['id']}}">{{ $item['name']}}</option>
@@ -76,7 +76,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Roles</label>
-                                    <select class="form-control" name="roles_id">
+                                    <select class="form-control select2_demo_1" name="roles_id">
                                         <option value="0" selected="true" disabled="True">Select Role</option>
                                         @foreach ($roles as $item)
                                             <option value="{{ $item['id']}}">{{ $item['title']}}</option>
@@ -99,21 +99,32 @@
                             </div>
                         </div>
 
-                        <div class="row">
+
+                        {{-- <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> 
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Admin?
+                                </label>
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+                        <div class="row password_form">
                             <!-- Password -->
                             <div class="col-sm-6 form-group">
                                 <label>Password</label>
                                 <input class="form-control" type="password" placeholder="Enter password" name="password" required autocomplete="new-password">
                             </div>
-                        </div>
-
-                        <div class="row">
                             <!-- Confirm Password -->
                             <div class="col-sm-6">
                                 <label>Confirm Password</label>
                                 <input class="form-control" type="password" placeholder="Enter password" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
                         <hr>
                         <!-- Buttons -->
                         <div class="form-group">
@@ -126,5 +137,18 @@
             </div>
         </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+    $(":checkbox").click(function(event) {
+        if (!$(this).is(":checked"))
+        $(".password_form").hide();
+        else
+        $(".password_form").show();
+    });
+    });
+</script>
     
 @endsection

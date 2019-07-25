@@ -78,6 +78,7 @@ class AccountabilityFormsController extends Controller
         $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
+        $af->form_statuses_id = 1;
         $af->save();
 
         // Decrease equipment by 1
@@ -95,6 +96,7 @@ class AccountabilityFormsController extends Controller
     public function show($id)
     {
         $af = AccountabilityForm::findOrFail($id);
+        
 
         return view('accountability_forms.show')
             ->with('af', $af);
@@ -108,7 +110,17 @@ class AccountabilityFormsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $af = AccountabilityForm::findOrFail($id);
+        $employees = User::orderBy('first_name')->get();
+        $equipment = Equipment::where('quantity', '!=', 0)->get();
+        $departments = Department::all();
+
+        return view('accountability_forms.edit')
+            ->with('af', $af)
+            ->with('equipment', $equipment)
+            ->with('employees', $employees)
+            ->with('departments', $departments)
+            ;
     }
 
     /**
@@ -120,7 +132,20 @@ class AccountabilityFormsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        // Create new accountability form
+        $af = AccountabilityForm::findOrFail($id);
+        $af->equipment_id = $request->get('equipment_id');
+        $af->designation = $request->get('designation');
+        $af->issued_date = Carbon::parse($request->get('issued_date'));
+
+        $af->departments_id = $request->get('departments_id');
+        $af->employees_id = $request->get('employees_id');
+        $af->admins_id = $request->get('admins_id');
+        $af->save();
+  
+ 
+        return redirect()->route('accountability_forms.index')->with('success','Accountability Form Created ');
     }
 
     /**
@@ -131,7 +156,16 @@ class AccountabilityFormsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $af = AccountabilityForm::findOrFail($id);
+
+        // Increase equipment by 1
+        $af->equipment->update(['quantity' => $af->equipment->quantity + 1]);   
+
+        $af->delete();
+  
+        return redirect()->route('accountability_forms.index')
+                        ->with('success','Form Removed')
+                        ;
     }
 
     public function pdfview(Request $request, $id)

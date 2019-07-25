@@ -42,7 +42,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($equipment as $e)
-                                    <tr class='clickable-row' data-href='/equipment/{{$e->id}}'>
+                                    <tr>
                                         <td>{{ $e->id }}</td>
                                         <td>{{ $e->it_tag }}</td>
                                         <td>{{ $e->name }}</td>
@@ -96,6 +96,8 @@
                 </div>
             </div>
 
+
+            
         </div>
     </div>
     

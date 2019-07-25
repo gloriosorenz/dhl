@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-        <div class="offset-lg-2 col-lg-8 offset-lg-2">
+        <div class="offset-lg-1 col-lg-10 offset-lg-1">
             <!-- Accountability Forms Table -->
             <div class="card shadow mb-4">
                 <!-- Table Header -->
@@ -31,27 +31,44 @@
                                 @if(count($acc_forms) > 0)
                                 <thead>
                                     <tr>
-                                        <th width="">ID</th>
-                                        <th width="">Employee</th>
-                                        <th width="">Equipment</th>
-                                        <th width="">IT Asset Tag</th>
-                                        <th width="">Date Issued</th>
-                                        <th class="text-center">Options</th>
+                                        <th class="text-center" width="5%">ID</th>
+                                        <th class="text-center" width="">Employee</th>
+                                        <th class="text-center" width="">Equipment</th>
+                                        <th class="text-center" width="">IT Asset Tag</th>
+                                        <th class="text-center" width="">Date Issued</th>
+                                        <th class="text-center" width="">Download</th>
+                                        <th class="text-center" width="">Transfer</th>
+                                        <th class="text-center" width="20%">Options</th>
+                                        <th class="text-center" width="">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($acc_forms as $item)
-                                    <tr class='clickable-row' data-href='/accountability_forms/{{$item->id}}'>
+                                    <tr class="text-center">
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
                                         <td>{{ $item->equipment->name }}</td>
                                         <td>{{ $item->equipment->it_tag }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
+                                        <td>
+                                            <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="/movement_forms/{{$item->id}}/create" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
+                                        </td>
                                         <td class="text-center">
                                             <a href="/accountability_forms/{{$item->id}}" class="btn btn-md btn-warning"> <i class="fas fa-eye fa-sm text-white"></i></a>
                                             <a href="/accountability_forms/{{$item->id}}/edit" class="btn btn-md btn-success"> <i class="fas fa-edit fa-sm text-white"></i></a>
-                                            <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
-                                            <a href="/movement_forms/{{$item->id}}/create" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fas fa-times"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @if ($item->form_statuses->id == 1)
+                                            <span class="badge badge-warning">{{ $item->form_statuses->status }}</span>
+                                            @else
+                                            <span class="badge badge-success">{{ $item->form_statuses->status }}</span>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -62,8 +79,35 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+             <!-- Delete Form Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete form?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this equipement?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="{{ route('accountability_forms.destroy',$item->id ?? 'Not set') }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                
+                                <button type="submit" class="btn btn-success">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
     
 @endsection

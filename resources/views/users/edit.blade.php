@@ -5,7 +5,7 @@
     
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Update a User</h1>
+        <h1 class="h3 mb-0 text-gray-800">Update an Employee</h1>
     </div>
 
     <a class="btn btn-md btn-secondary" href="{{route('users.index')}}">Back</a>
@@ -18,7 +18,7 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">User Details</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Employee Details</h6>
                         </div>
                     </div>
                 </div>

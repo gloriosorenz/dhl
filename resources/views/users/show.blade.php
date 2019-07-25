@@ -5,7 +5,7 @@
     
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Equipment</h1>
+        <h1 class="h3 mb-0 text-gray-800">Employee</h1>
         {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
 
@@ -18,7 +18,7 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">User Information</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Employee Information</h6>
                         </div>
                     </div>
                 </div>
@@ -106,6 +106,7 @@
                                         <th width="">ID</th>
                                         <th width="">Employee</th>
                                         <th width="">Equipment</th>
+                                        <th width="">IT tag</th>
                                         <th width="">Date Issued</th>
                                     </tr>
                                 </thead>
@@ -115,6 +116,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
                                         <td>{{ $item->equipment->name }}</td>
+                                        <td>{{ $item->equipment->it_tag }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
                                     </tr>
                                     @endforeach
