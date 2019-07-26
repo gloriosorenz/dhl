@@ -6,7 +6,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Accountability Forms</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <a href="{{ route('accountability_forms.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Form</a>
     </div>
 
     <div class="row">
@@ -36,10 +36,10 @@
                                         <th class="text-center" width="">Equipment</th>
                                         <th class="text-center" width="">IT Asset Tag</th>
                                         <th class="text-center" width="">Date Issued</th>
+                                        <th class="text-center" width="">Status</th>
+                                        <th class="text-center" width="20%">Options</th>
                                         <th class="text-center" width="">Download</th>
                                         <th class="text-center" width="">Transfer</th>
-                                        <th class="text-center" width="20%">Options</th>
-                                        <th class="text-center" width="">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,10 +51,11 @@
                                         <td>{{ $item->equipment->it_tag }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
                                         <td>
-                                            <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
-                                        </td>
-                                        <td>
-                                            <a href="/movement_forms/{{$item->id}}/create" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
+                                            @if ($item->form_statuses->id == 1)
+                                            <span class="badge badge-warning">{{ $item->form_statuses->status }}</span>
+                                            @else
+                                            <span class="badge badge-success">{{ $item->form_statuses->status }}</span>
+                                            @endif
                                         </td>
                                         <td class="text-center">
                                             <a href="/accountability_forms/{{$item->id}}" class="btn btn-md btn-warning"> <i class="fas fa-eye fa-sm text-white"></i></a>
@@ -64,11 +65,10 @@
                                             </button>
                                         </td>
                                         <td>
-                                            @if ($item->form_statuses->id == 1)
-                                            <span class="badge badge-warning">{{ $item->form_statuses->status }}</span>
-                                            @else
-                                            <span class="badge badge-success">{{ $item->form_statuses->status }}</span>
-                                            @endif
+                                            <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="/movement_forms/{{$item->id}}/create" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -80,7 +80,13 @@
                 </div>
             </div>
 
-             <!-- Delete Form Modal -->
+
+
+
+
+
+
+            <!-- Delete Form Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -98,7 +104,6 @@
                             <form action="{{ route('accountability_forms.destroy',$item->id ?? 'Not set') }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                
                                 <button type="submit" class="btn btn-success">Delete</button>
                             </form>
                         </div>

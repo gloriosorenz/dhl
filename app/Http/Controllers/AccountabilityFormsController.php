@@ -23,10 +23,14 @@ class AccountabilityFormsController extends Controller
     public function index()
     {
         $acc_forms = AccountabilityForm::all();
+        $for_approval = AccountabilityForm::where('form_statuses_id', 1);
+        $approved = AccountabilityForm::where('form_statuses_id', 2);
 
         // dd($acc_forms);
         return view('accountability_forms.index')
             ->with('acc_forms', $acc_forms)
+            ->with('for_approval', $for_approval)
+            ->with('approved', $approved)
             ;
     }
 
@@ -39,7 +43,7 @@ class AccountabilityFormsController extends Controller
     {
         // $request = RequestForm::findOrFail($id);
         $employees = User::orderBy('first_name')->get();
-        $equipment = Equipment::where('quantity', '!=', 0)->get();
+        $equipment = Equipment::where('equipment_statuses_id', 3)->get();
         $departments = Department::all();
 
         return view('accountability_forms.create')
@@ -78,11 +82,14 @@ class AccountabilityFormsController extends Controller
         $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
-        $af->form_statuses_id = 1;
+
+        $af->form_statuses_id = 1; // for apporoval
+
         $af->save();
 
-        // Decrease equipment by 1
-        $af->equipment->update(['quantity' => $af->equipment->quantity - 1]);   
+        // Updates equipment status
+        $af->equipment->update(['equipment_statuses_id' => 2]);   // becomes requested
+
  
         return redirect()->route('accountability_forms.index')->with('success','Accountability Form Created ');
     }
@@ -142,9 +149,12 @@ class AccountabilityFormsController extends Controller
         $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
+
+        $af->equipment->equipment_statuses_id = 1; // equipment becomes active
+        $af->form_statuses_id = 2; // form becomes approved
         $af->save();
   
- 
+
         return redirect()->route('accountability_forms.index')->with('success','Accountability Form Created ');
     }
 
@@ -159,7 +169,7 @@ class AccountabilityFormsController extends Controller
         $af = AccountabilityForm::findOrFail($id);
 
         // Increase equipment by 1
-        $af->equipment->update(['quantity' => $af->equipment->quantity + 1]);   
+        // $af->equipment->update(['quantity' => $af->equipment->quantity + 1]);   
 
         $af->delete();
   

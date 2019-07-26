@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RolesTableSeeder extends Seeder
+class EquipmentStatusesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,15 +13,15 @@ class RolesTableSeeder extends Seeder
     {
         $items = [
             
-            ['id' => 1, 'title' => 'Head Administrator',],
-            ['id' => 2, 'title' => 'Administrator',],
-            ['id' => 3, 'title' => 'Employee',],
+            ['id' => 1, 'status' => 'Active',],
+            ['id' => 2, 'status' => 'Requested',],
+            ['id' => 3, 'status' => 'Inactive',],
             // ['id' => 4, 'title' => 'Animal Farmer',],
 
         ];
 
         foreach ($items as $item) {
-            \App\Role::create($item);
+            \App\EquipmentStatus::create($item);
         }
     }
 }

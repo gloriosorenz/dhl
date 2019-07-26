@@ -84,7 +84,7 @@
 
 
 
-    <!-- Equipment History -->
+    <!-- Equipment on hand -->
     <div class="row">
         <div class="offset-lg-2 col-lg-8 offset-lg-2">
             <div class="card shadow mb-4">
@@ -92,7 +92,7 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Equipment History</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Equipment on hand</h6>
                         </div>
                     </div>
                 </div>

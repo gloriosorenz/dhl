@@ -8,7 +8,6 @@
         <h1 class="h3 mb-0 text-gray-800">Create an Accountability Form</h1>
     </div>
 
-    <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 
 
     <div class="row">
@@ -50,7 +49,7 @@
                                     <select class="form-control select2_demo_1" name="equipment_id">
                                         <option value="0" selected="true" disabled="True">Select Equipment</option>
                                         @foreach ($equipment as $type)
-                                            <option value="{{ $type['id']}}">{{ $type['name']}}</option>
+                                            <option value="{{ $type['id']}}">{{ $type['name']}} - {{ $type['it_tag']}}</option>
                                         @endforeach
                                     </select>
                                 </td>

@@ -27,7 +27,7 @@
                         <!-- If equipment is laptop -->
                         @if ($equipment->equipment_types->id == 1)
                             <p>Name: {{$equipment->name}}</p>
-                            <p>Brand: {{$equipment->brand}}</p>
+                            <p>Brand: {{$equipment->brands->name}}</p>
                             <p>Specifications: {{$equipment->specifications}}</p>
                             <p>Serial Number: {{$equipment->serial_number}}</p>
                             <p>Unit Cost: {{$equipment->unit_cost}}</p>

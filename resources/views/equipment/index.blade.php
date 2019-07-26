@@ -36,7 +36,7 @@
                                         <th width="">Name</th>
                                         <th width="">Type</th>
                                         <th width="">Brand</th>
-                                        <th width="">Quantity</th>
+                                        <th width="">Active</th>
                                         <th width="20%">Options</th>
                                     </tr>
                                 </thead>
@@ -48,7 +48,15 @@
                                         <td>{{ $e->name }}</td>
                                         <td>{{ $e->equipment_types->type }}</td>
                                         <td>{{ $e->brands->name }}</td>
-                                        <td>{{ $e->quantity }}</td>
+                                        <td>
+                                            @if ($e->equipment_statuses->id == 1)
+                                                <span class="badge badge-success">{{$e->equipment_statuses->status}}</span>
+                                            @elseif ($e->equipment_statuses->id == 2)
+                                                <span class="badge badge-warning">{{$e->equipment_statuses->status}}</span>
+                                            @elseif ($e->equipment_statuses->id == 3)
+                                                <span class="badge badge-danger">{{$e->equipment_statuses->status}}</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="/equipment/{{$e->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                                             <a href="/equipment/{{$e->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>

@@ -10,13 +10,13 @@ class Equipment extends Model
         'name', 
         'it_tag', 
         'asset_tag', 
-        // 'brand', 
         'specifications', 
         'serial_number', 
         'unit_cost', 
         'date_purchased', 
         'date_issued', 
-        'quantity', 
+        // 'quantity', 
+        // 'active',
 
         'plan', 
         'calls', 
@@ -31,11 +31,17 @@ class Equipment extends Model
 
         'brands_id',
         'equipment_types_id',
+        'equipment_statuses_id',
     ];
 
     public function equipment_types()
     {
         return $this->belongsTo(EquipmentType::class, 'equipment_types_id');
+    }
+
+    public function equipment_statuses()
+    {
+        return $this->belongsTo(EquipmentStatus::class, 'equipment_statuses_id');
     }
 
     public function brands()

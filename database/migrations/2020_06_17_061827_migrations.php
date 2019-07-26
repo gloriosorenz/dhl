@@ -25,8 +25,8 @@ class Migrations extends Migration
         Schema::table('equipment',function(Blueprint $table){
             $table->foreign('equipment_types_id')
                 ->references('id')->on('equipment_types')->onDelete('cascade');
-            // $table->foreign('brands_id')
-            //     ->references('id')->on('brands')->onDelete('cascade');
+            $table->foreign('equipment_statuses_id')
+                ->references('id')->on('equipment_statuses')->onDelete('cascade');
         });
 
         // Brands

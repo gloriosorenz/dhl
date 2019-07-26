@@ -91,7 +91,12 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $acc_forms = AccountabilityForm::where('employees_id', $user->id)->get();
+
+        // Shows equipment on hand
+        $acc_forms = AccountabilityForm::join('equipment', 'accountability_forms.equipment_id', '=', 'equipment.id')
+            ->where('equipment_statuses_id', 1)
+            ->where('employees_id', $user->id)
+            ->get();
 
         return view('users.show')
             ->with('user', $user)

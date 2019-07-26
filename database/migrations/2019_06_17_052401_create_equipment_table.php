@@ -24,7 +24,8 @@ class CreateEquipmentTable extends Migration
             $table->double('unit_cost')->nullable();
             $table->date('date_purchased')->nullable();
             $table->date('date_issued')->nullable();
-            $table->integer('quantity')->nullable();
+            // $table->integer('quantity')->nullable();
+            // $table->boolean('active')->nullable();
 
             $table->string('plan')->nullable();
             $table->string('calls')->nullable();
@@ -39,6 +40,7 @@ class CreateEquipmentTable extends Migration
 
             $table->integer('brands_id')->unsigned()->nullable();
             $table->integer('equipment_types_id')->unsigned()->nullable();
+            $table->integer('equipment_statuses_id')->unsigned()->nullable();
 
 
             $table->timestamps();

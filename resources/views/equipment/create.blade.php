@@ -165,13 +165,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <!-- Quantity -->
                                         <div class="col-sm-6 form-group">
                                             <label>Quantity</label>
                                             <input class="form-control" type="number" placeholder="0" step="1" min="1" name="quantity">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Buttons -->
                                     <div class="form-group">

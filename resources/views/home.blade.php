@@ -106,7 +106,7 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6 class="m-0 font-weight-bold text-primary">Accountability Forms</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Active Equipment</h6>
                             </div>
                             {{-- <div class="col-md-6">
                                 <a href="{{ route('accountability_forms.create') }}" class="btn btn-sm btn-success shadow-sm float-right"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Form</a>
@@ -116,7 +116,7 @@
                     <!-- Table Body -->
                     <div class="card-body">
                         <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
+                                <table id="accountability_forms_table" class="table table-bordered table-hover">
                                     @if(count($acc_forms) > 0)
                                     <thead>
                                         <tr>

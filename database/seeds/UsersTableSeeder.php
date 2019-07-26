@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $items = [
-            // Administrators 
+            // Head Administrators 
             [
                 'id' => 1, 
                 'first_name' => 'Ram', 
@@ -37,6 +37,8 @@ class UsersTableSeeder extends Seeder
                 'roles_id' => 1, 
                 'departments_id' => 1,
             ],
+
+            // Administrators
             [
                 'id' => 3, 
                 'first_name' => 'Mike', 
@@ -97,6 +99,7 @@ class UsersTableSeeder extends Seeder
                 'roles_id' => 2, 
                 'departments_id' => 1,
             ],
+            // Employees
             [
                 'id' => 8, 
                 'first_name' => 'Miguel', 
@@ -106,7 +109,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'IT',
-                'roles_id' => 2, 
+                'roles_id' => 3, 
                 'departments_id' => 1,
             ],
             [
@@ -118,7 +121,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'Intern',
-                'roles_id' => 2, 
+                'roles_id' => 3, 
                 'departments_id' => 1,
             ],
             [
@@ -130,7 +133,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'Marketing',
-                'roles_id' => 2, 
+                'roles_id' => 3, 
                 'departments_id' => 2,
             ],
 

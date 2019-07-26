@@ -26,8 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $acc_forms = AccountabilityForm::paginate(10);
         $mov_forms = MovementForm::paginate(10);
+
+        // Shows all active equipment
+        $acc_forms = AccountabilityForm::join('equipment', 'accountability_forms.equipment_id', '=', 'equipment.id')
+            ->select('accountability_forms.*')
+            ->where('equipment_statuses_id', 1)
+            // ->where('employees_id', $user->id)
+            ->paginate(10)
+            // ->get()
+            ;
 
         // dd($acc_forms);
         

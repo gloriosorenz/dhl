@@ -75,7 +75,8 @@ class EquipmentController extends Controller
         $equipment->unit_cost = $request->get('unit_cost');
         $equipment->date_purchased = Carbon::parse($request->date_purchased);
         $equipment->date_issued = Carbon::parse($request->date_issued);
-        $equipment->quantity = $request->get('quantity');
+        // $equipment->quantity = $request->get('quantity');
+        $equipment->active = false;
 
         // For phone
         $equipment->plan = $request->get('plan');
