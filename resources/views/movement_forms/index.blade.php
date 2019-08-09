@@ -5,7 +5,7 @@
     
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Movement/Transfer Forms</h1>
+        <h1 class="h3 mb-0 text-gray-800">Movement / Transfer Forms</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -35,7 +35,7 @@
                                         <th width="">Employee</th>
                                         <th width="">Equipment</th>
                                         <th width="">IT Asset Tag</th>
-                                        <th width="">Date Issued</th>
+                                        {{-- <th width="">Date Issued</th> --}}
                                         <th class="text-center">Options</th>
                                     </tr>
                                 </thead>
@@ -44,9 +44,9 @@
                                     <tr class="tr">
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
-                                        <td>{{ $item->equipment->name }}</td>
-                                        <td>{{ $item->equipment->it_tag }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
+                                        <td>{{ $item->accountability_forms->equipment->name }}</td>
+                                        <td>{{ $item->accountability_forms->equipment->it_tag }}</td>
+                                        {{-- <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td> --}}
                                         <td class="text-center">
                                             <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
                                             <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>

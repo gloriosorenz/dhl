@@ -15,8 +15,8 @@ class FormStatusesTableSeeder extends Seeder
             
             ['id' => 1, 'status' => 'For Approval',],
             ['id' => 2, 'status' => 'Approved',],
-            // ['id' => 3, 'title' => 'Rice Miller',],
-            // ['id' => 4, 'title' => 'Animal Farmer',],
+            ['id' => 3, 'status' => 'Cancelled',],
+            ['id' => 4, 'status' => 'Transfered',],
 
         ];
 

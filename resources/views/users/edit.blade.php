@@ -47,14 +47,14 @@
                             <!-- Position -->
                             <div class="col-sm-6">
                                 <label>Position</label>
-                                <input class="form-control" type="text" value="{{$user->position}}"  name="postion">
+                                <input class="form-control" type="text" value="{{$user->position}}"  name="position">
                             </div>
                              <!-- Department -->
                              <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Department</label>
-                                    <select class="form-control" name="users_id">
-                                        <option value="{{$user->departments->id}}"  selected="true" disabled="True">{{$user->departments->name}}</option>
+                                    <select class="form-control" name="departments_id">
+                                        <option value="{{$user->departments->id}}"  elected="true">{{$user->departments->name}}</option>
                                         @foreach ($department as $item)
                                             <option value="{{ $item['id']}}">{{ $item['name']}}</option>
                                         @endforeach
@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Roles</label>
                                     <select class="form-control" name="roles_id">
-                                        <option value="{{$user->departments->id}}"  selected="true" disabled="True">{{$user->roles->title}}</option>
+                                        <option value="{{$user->departments->id}}"  selected="true">{{$user->roles->title}}</option>
                                         @foreach ($roles as $item)
                                             <option value="{{ $item['id']}}">{{ $item['title']}}</option>
                                         @endforeach
@@ -110,7 +110,7 @@
                         <!-- Buttons -->
                         <div class="form-group">
                             <a href="{{URL::previous()}}" class="btn btn-danger" type="submit">Cancel</a>
-                            <button class="btn btn-success" type="submit">+ Update</button>
+                            <button class="btn btn-success" type="submit">Update</button>
                         </div>
                     </form>
                     <!-- End Form -->

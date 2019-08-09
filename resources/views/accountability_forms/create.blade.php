@@ -31,8 +31,8 @@
                     <table id="users_table" class="table table-bordered">
                         <thead>
                             <tr class="text-center">
-                                <th width="50%">Employee Name</th>
-                                <th width="50%">Equipment Name</th>
+                                <th width="50%"><a href="{{route('users.index')}}">Employee </a></th>
+                                <th width="50%"><a href="{{route('equipment.index')}}">Equipment</a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +57,7 @@
                     </table>
 
                                    
-                    <div class="row">
+                    {{-- <div class="row">
                         <!-- Designation -->
                         <div class="col-sm-6 form-group">
                             <label>Designation</label>
@@ -75,7 +75,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row">
                         <!-- Issued date -->
@@ -113,7 +113,7 @@
                     <!-- Buttons -->
                     <div class="form-group">
                         <a href="{{URL::previous()}}" class="btn btn-danger">Cancel</a>
-                        <button class="btn btn-success" type="submit">+ Create</button>
+                        <button class="btn btn-success" type="submit">Create</button>
                     </div>
                     
                     </form>

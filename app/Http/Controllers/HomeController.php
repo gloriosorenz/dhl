@@ -31,7 +31,8 @@ class HomeController extends Controller
         // Shows all active equipment
         $acc_forms = AccountabilityForm::join('equipment', 'accountability_forms.equipment_id', '=', 'equipment.id')
             ->select('accountability_forms.*')
-            ->where('equipment_statuses_id', 1)
+            ->where('form_statuses_id', 2)
+            ->where('equipment.equipment_statuses_id', 1)
             // ->where('employees_id', $user->id)
             ->paginate(10)
             // ->get()

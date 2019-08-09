@@ -27,12 +27,17 @@ Route::group( ['middleware' => 'auth' ], function()
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    // PDF
+    // Accountability Form
+    Route::get('/accountability_forms/approveForm/{id}', 'AccountabilityFormsController@approveForm');
+    Route::get('/accountability_forms/cancelForm/{id}', 'AccountabilityFormsController@cancelForm');
     Route::get('pdf/accountability_form/{id}', 'AccountabilityFormsController@pdfview');
 
 
     Route::get('/movement_forms/{id}/create','MovementFormsController@create');
     // Route::get('/accountability_forms/{id}/edit','AccountabilityFormsController@edit');
+
+   
+
 
     Route::resource('users', 'UsersController');
     Route::resource('equipment', 'EquipmentController');

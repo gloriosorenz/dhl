@@ -48,12 +48,12 @@
                         <!-- Designation -->
                         <div class="col-sm-6 form-group">
                             <label>Designation</label>
-                            <input class="form-control" type="text" value="{{$af->designation}}" readonly/>
+                            <input class="form-control" type="text" value="{{$af->employees->position}}" readonly/>
                         </div>
                         <!-- Department -->
                         <div class="col-sm-6 form-group" text->
                             <label>Department</label>
-                            <input class="form-control" type="text" value="{{$af->departments->name}}" readonly/>
+                            <input class="form-control" type="text" value="{{$af->employees->departments->name}}" readonly/>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
                         <div class="col-sm-6">
                             <div class="form-group" id="">
                                 <label>Issued Date</label>
-                                <input class="form-control" type="text" value="{{$af->issued_date}}" readonly/>
+                                <input class="form-control" type="text" value="{{\Carbon\Carbon::parse($af->issued_date)->format('F j, Y')}}" readonly/>
                             </div>
                         </div>
                         <!-- Issued by -->

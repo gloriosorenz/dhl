@@ -59,7 +59,7 @@
                     </table>
 
                                    
-                    <div class="row">
+                    {{-- <div class="row">
                         <!-- Designation -->
                         <div class="col-sm-6 form-group">
                             <label>Designation</label>
@@ -77,7 +77,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row">
                         <!-- Issued date -->

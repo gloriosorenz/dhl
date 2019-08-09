@@ -8,9 +8,6 @@
         <h1 class="h3 mb-0 text-gray-800">Create a Movement Form</h1>
     </div>
 
-    {{-- <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a> --}}
-
-
     <div class="row">
         <div class="offset-lg-2 col-lg-8 offset-lg-2">
             <div class="card shadow mb-4">
@@ -26,29 +23,44 @@
                 <div class="card-body">      
                     
                     <!-- Start Form -->
-                    <form method="post" action="{{action('MovementFormsController@store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{action('MovementFormsController@store')}}" enctype="multipart/form-data">
                     @csrf  
 
                     <!-- Employee Details -->
-                    <h4>Employee Details</h4>
+                    <h4>Employee</h4>
                     <br>
-                    <dl class="row">
-                        <dt class="col-sm-3">Employee Name</dt>
-                        <dd class="col-sm-9">{{$af->employees->first_name}} {{$af->employees->last_name}}</dd>
-                        
-                        <dt class="col-sm-3">Employee Number</dt>
-                        <dd class="col-sm-9">N/A</dd>
-                        
-                        <dt class="col-sm-3">Position</dt>
-                        <dd class="col-sm-9">{{$af->employees->position}}</dd>
-                        
-                        <dt class="col-sm-3 text-truncate">Site</dt>
-                        <dd class="col-sm-9">N/A</dd>
-
-                        <dt class="col-sm-3">Cost Center</dt>
-                        <dd class="col-sm-9">N/A</dd>
-                    </dl>
-
+                    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="exampleFormControlSelect1">Choose Employee</label>
+                            <select class="form-control select2_demo_1" name="employees_id">
+                                <option value="{{$af->employees->id}}" selected="true">{{$af->employees->first_name}} {{$af->employees->last_name}}</option>
+                                @foreach ($employees as $item)
+                                    <option value="{{ $item['id']}}">{{ $item['first_name']}} {{ $item['last_name']}}</option>
+                                @endforeach
+                            </select>
+                            {{-- <table id="users_table" class="table table-bordered">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th width="50%">Choose Employee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tr">
+                                        <td class="text-center">
+                                            <select class="form-control select2_demo_1" name="employees_id">
+                                                <option value="0" selected="true" disabled="True">Select User</option>
+                                                @foreach ($employees as $item)
+                                                    <option value="{{ $item['id']}}">{{ $item['first_name']}} {{ $item['last_name']}}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
+                            </table> --}}
+                        </div>
+                    </div>
+                    
+                    <br>
                     <hr>
 
                     <!-- Equipmenet Details -->
@@ -69,6 +81,7 @@
                             <tr class="text-center">
                                 <td>
                                     {{$af->equipment->equipment_types->type}}
+                                    <input type="hidden" name="accountability_forms_id" value="{{$af->id}}">
                                 </td>
                                 <td>
                                     {{$af->equipment->name}}
@@ -99,7 +112,7 @@
                         <div class="col-sm-12">
                                 <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Remarks</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remarks"></textarea>
                                 </div>
                         </div>
                     </div>
@@ -120,7 +133,7 @@
                     <!-- Buttons -->
                     <div class="form-group">
                         <a href="{{URL::previous()}}" class="btn btn-danger">Cancel</a>
-                        <button class="btn btn-success" type="submit">+ Create</button>
+                        <button class="btn btn-success" type="submit">Create</button>
                     </div>
                     
                     </form>
@@ -131,3 +144,27 @@
     </div>
     
 @endsection
+
+{{-- <dl class="row">
+        <dt class="col-sm-3">Employee Name</dt>
+        <dd class="col-sm-9">
+            <select class="form-control select2_demo_1" name="employees_id">
+                <option value="0" selected="true" disabled="True">Select User</option>
+                @foreach ($employees as $item)
+                    <option value="{{ $item['id']}}">{{ $item['first_name']}} {{ $item['last_name']}}</option>
+                @endforeach
+            </select>
+        </dd>
+        
+        <dt class="col-sm-3">Employee Number</dt>
+        <dd class="col-sm-9">N/A</dd>
+        
+        <dt class="col-sm-3">Position</dt>
+        <dd class="col-sm-9">{{$af->employees->position}}</dd>
+        
+        <dt class="col-sm-3 text-truncate">Site</dt>
+        <dd class="col-sm-9">N/A</dd>
+
+        <dt class="col-sm-3">Cost Center</dt>
+        <dd class="col-sm-9">N/A</dd>
+    </dl> --}}

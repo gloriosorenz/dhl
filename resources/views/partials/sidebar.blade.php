@@ -62,6 +62,20 @@
         <span>Employees</span></a>
     </li>
 
+    <!-- Equipment -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('equipment.index') }}">
+        <i class="fas fa-fw fa-laptop"></i>
+        <span>Equipment</span></a>
+    </li>
+
+    <!-- Brands -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('brands.index') }}">
+        <i class="fas fa-fw fa-tag"></i>
+        <span>Brands</span></a>
+    </li>
+
     <!-- Departments -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('departments.index') }}">
@@ -70,7 +84,7 @@
     </li>
 
     <!-- Equipment -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#nav_equipment" aria-expanded="true" aria-controls="nav_equipment">
             <i class="fas fa-fw fa-cogs"></i>
             <span>Equipment</span>
@@ -80,12 +94,9 @@
                 <h6 class="collapse-header">Components:</h6>
                 <a class="collapse-item" href="{{ route('equipment.index') }}">Equipment</a>
                 <a class="collapse-item" href="{{ route('brands.index') }}">Brands</a>
-                {{-- <a class="collapse-item" href="{{ route('equipment.index') }}">Desktops</a>
-                <a class="collapse-item" href="{{ route('equipment.index') }}">RF Guns</a>
-                <a class="collapse-item" href="{{ route('equipment.index') }}">External Drive</a> --}}
             </div>
         </div>
-    </li>
+    </li> --}}
     
 
     
@@ -141,6 +152,20 @@
         <a class="nav-link" href="{{ route('users.index') }}">
         <i class="fas fa-fw fa-users"></i>
         <span>Employees</span></a>
+    </li>
+
+    <!-- Equipment -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('equipment.index') }}">
+        <i class="fas fa-fw fa-laptop"></i>
+        <span>Equipment</span></a>
+    </li>
+
+    <!-- Brands -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('brands.index') }}">
+        <i class="fas fa-fw fa-tag"></i>
+        <span>Brands</span></a>
     </li>
 
     <!-- Departments -->

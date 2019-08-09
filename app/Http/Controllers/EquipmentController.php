@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Equipment;
 use App\EquipmentType;
 use App\Brand;
+use App\AccountabilityForm;
 
 use Carbon\Carbon;
 
@@ -105,9 +106,11 @@ class EquipmentController extends Controller
     public function show($id)
     {
         $equipment = Equipment::findOrFail($id);
+        $acc_forms = AccountabilityForm::where('equipment_id', $id)->get();
 
         return view('equipment.show')
-            ->with('equipment', $equipment);
+            ->with('equipment', $equipment)
+            ->with('acc_forms', $acc_forms);
     }
 
     /**

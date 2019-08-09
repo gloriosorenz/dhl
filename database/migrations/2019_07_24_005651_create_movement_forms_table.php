@@ -15,6 +15,16 @@ class CreateMovementFormsTable extends Migration
     {
         Schema::create('movement_forms', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('remarks');
+            $table->string('mf_num');
+            $table->date('prepared_date')->nullable();
+
+            $table->integer('accountability_forms_id')->unsigned()->nullable();
+            $table->integer('form_statuses_id')->unsigned()->nullable();
+            $table->integer('employees_id')->unsigned()->nullable();
+            $table->integer('admins_id')->unsigned()->nullable();
+            $table->integer('reason_codes_id')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }

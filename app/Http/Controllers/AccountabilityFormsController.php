@@ -23,14 +23,18 @@ class AccountabilityFormsController extends Controller
     public function index()
     {
         $acc_forms = AccountabilityForm::all();
-        $for_approval = AccountabilityForm::where('form_statuses_id', 1);
-        $approved = AccountabilityForm::where('form_statuses_id', 2);
+        $for_approval = AccountabilityForm::where('form_statuses_id', 1)->get();
+        $approved = AccountabilityForm::where('form_statuses_id', 2)->get();
+        $cancelled = AccountabilityForm::where('form_statuses_id', 3)->get();
+        $transfered = AccountabilityForm::where('form_statuses_id', 4)->get();
 
-        // dd($acc_forms);
+        // dd($approved);
         return view('accountability_forms.index')
             ->with('acc_forms', $acc_forms)
             ->with('for_approval', $for_approval)
             ->with('approved', $approved)
+            ->with('cancelled', $cancelled)
+            ->with('transfered', $transfered)
             ;
     }
 
@@ -63,7 +67,7 @@ class AccountabilityFormsController extends Controller
     {
         $af_num = randomNumber();
 
-        // Check duplicates
+        // Check for duplicates
         $check = AccountabilityForm::pluck('af_num');
 
         foreach ($check as $num) {
@@ -71,15 +75,18 @@ class AccountabilityFormsController extends Controller
                 
             }
         }
+
+
+
         // Create new accountability form
         $af = new AccountabilityForm;
         $af->request_forms_id = $request->get('request_forms_id');
         $af->equipment_id = $request->get('equipment_id');
         $af->af_num = $af_num;
-        $af->designation = $request->get('designation');
+        // $af->designation = $request->get('designation');
         $af->issued_date = Carbon::parse($request->get('issued_date'));
 
-        $af->departments_id = $request->get('departments_id');
+        // $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
 
@@ -119,7 +126,7 @@ class AccountabilityFormsController extends Controller
     {
         $af = AccountabilityForm::findOrFail($id);
         $employees = User::orderBy('first_name')->get();
-        $equipment = Equipment::where('quantity', '!=', 0)->get();
+        $equipment = Equipment::where('equipment_statuses_id', 3)->get();
         $departments = Department::all();
 
         return view('accountability_forms.edit')
@@ -143,15 +150,15 @@ class AccountabilityFormsController extends Controller
         // Create new accountability form
         $af = AccountabilityForm::findOrFail($id);
         $af->equipment_id = $request->get('equipment_id');
-        $af->designation = $request->get('designation');
+        // $af->designation = $request->get('designation');
         $af->issued_date = Carbon::parse($request->get('issued_date'));
 
-        $af->departments_id = $request->get('departments_id');
+        // $af->departments_id = $request->get('departments_id');
         $af->employees_id = $request->get('employees_id');
         $af->admins_id = $request->get('admins_id');
 
         $af->equipment->equipment_statuses_id = 1; // equipment becomes active
-        $af->form_statuses_id = 2; // form becomes approved
+        // $af->form_statuses_id = 2; // form becomes approved
         $af->save();
   
 
@@ -191,5 +198,29 @@ class AccountabilityFormsController extends Controller
 
         // download pdf
         return $pdf->stream('acountability_form.pdf');
+    }
+
+    public function approveForm($id){
+        
+        $af = AccountabilityForm::findOrFail($id);
+        $af->form_statuses_id = 2; // form becomes approved
+        $af->save();
+
+        // Updates equipment status
+        $af->equipment->update(['equipment_statuses_id' => 1]);   // becomes active
+
+        return redirect()->back()->with('success', 'Form Approved');
+    }
+
+    public function cancelForm($id){
+        
+        $af = AccountabilityForm::findOrFail($id);
+        $af->form_statuses_id = 3; // form becomes approved
+        $af->save();
+
+        // Updates equipment status
+        $af->equipment->update(['equipment_statuses_id' => 3]);   // becomes inactive
+
+        return redirect()->back()->with('success', 'Form Cancelled');
     }
 }

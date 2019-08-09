@@ -45,8 +45,8 @@
             <div class="col-xs-6">
                 <address>
                         Employee Name: <strong>{{$af->employees->first_name}} {{$af->employees->last_name}}</strong><br>
-                        Designation: <strong>{{$af->designation}}</strong><br>
-                        Department/Station: <strong>{{$af->department}}</strong><br>
+                        Designation: <strong>{{$af->employees->position}}</strong><br>
+                        Department/Station: <strong>{{$af->employees->departments->name}}</strong><br>
                         Brand/Model: <strong>{{$af->equipment->name}}</strong><br>
                         Specifications: <strong>{{$af->equipment->specifications}}</strong><br>
                         Unit Cost: <strong>{{ presentPrice($af->equipment->unit_cost) }}</strong><br>
@@ -97,7 +97,7 @@
                 <strong>
                 <p class="text-center">{{$af->admins->first_name}} {{$af->admins->last_name}}</p>
                 <hr>
-                <p class="text-center">{{$af->departments->name}}</p>
+                <p class="text-center">{{$af->admins->departments->name}}</p>
                 <p class="text-center">{{$af->admins->position}}</p>
                 </strong>
             </div>

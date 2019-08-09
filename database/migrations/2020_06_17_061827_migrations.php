@@ -60,18 +60,18 @@ class Migrations extends Migration
         });
 
         // Movement Form
-        // Schema::table('accountability_forms',function(Blueprint $table){
-        //     $table->foreign('request_forms_id')
-        //         ->references('id')->on('request_forms')->onDelete('cascade');
-        //     $table->foreign('equipment_id')
-        //         ->references('id')->on('equipment')->onDelete('cascade');
-        //     $table->foreign('departments_id')
-        //             ->references('id')->on('departments')->onDelete('cascade');
-        //     $table->foreign('employees_id')
-        //             ->references('id')->on('users')->onDelete('cascade');
-        //     $table->foreign('admins_id')
-        //             ->references('id')->on('users')->onDelete('cascade');
-        // });
+        Schema::table('movement_forms',function(Blueprint $table){
+            $table->foreign('accountability_forms_id')
+                    ->references('id')->on('accountability_forms')->onDelete('cascade');
+            $table->foreign('form_statuses_id')
+                    ->references('id')->on('form_statuses')->onDelete('cascade');
+            $table->foreign('employees_id')
+                    ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('admins_id')
+                    ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reason_codes_id')
+                    ->references('id')->on('reason_codes')->onDelete('cascade');
+        });
 
     }
 

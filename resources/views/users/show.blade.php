@@ -25,58 +25,30 @@
                 <!-- Table Body -->
                 <div class="card-body">
 
-                    <!-- Request form id (hidden) -->
-                    <div class="row">
-                        <!-- First Name -->
-                        <div class="col-sm-6 form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" value="{{$user->first_name}}" disabled>
-                        </div>
-                        <!-- Last Name -->
-                        <div class="col-sm-6 form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" type="text" value="{{$user->last_name}}" disabled>
-                        </div>
-                    </div>
+                        <!-- Employee Description -->
+                        <dl class="row">
+                            <dt class="col-sm-2">Frist Name</dt>
+                            <dd class="col-sm-9">{{$user->first_name}}</dd>
+                            
+                            <dt class="col-sm-2">Last Name</dt>
+                            <dd class="col-sm-9">{{$user->last_name}}</dd>
+                            
+                            <dt class="col-sm-2">Position</dt>
+                            <dd class="col-sm-9">{{$user->position}}</dd>
+                            
+                            <dt class="col-sm-2">Department</dt>
+                            <dd class="col-sm-9">{{$user->departments->name}}</dd>
 
-                    <div class="row">
-                        <!-- Position -->
-                        <div class="col-sm-6">
-                            <label>Position</label>
-                            <input class="form-control" type="text" value="{{$user->position}}" disabled>
-                        </div>
+                            <dt class="col-sm-2">Role</dt>
+                            <dd class="col-sm-9">{{$user->roles->title}}</dd>
 
-                            <!-- Department -->
-                            <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Department</label>
-                                <input class="form-control" type="text" value="{{$user->departments->name}}" disabled>
-                            </div>
-                        </div>
-                    </div>
+                            <dt class="col-sm-2">Email</dt>
+                            <dd class="col-sm-9">{{$user->email}}</dd>
 
-                    <div class="row">
-                        <!-- Role -->
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Roles</label>
-                                <input class="form-control" type="text" value="{{$user->roles->title}}" disabled>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <!-- Email -->
-                        <div class="col-sm-6 form-group">
-                            <label>Email</label>
-                            <input class="form-control" type="text" value="{{$user->email}}" disabled>
-                        </div>
-                        <!-- Phone -->
-                        <div class="col-sm-6 form-group">
-                            <label>Phone</label>
-                            <input class="form-control" type="text" value="{{$user->phone}}" disabled>
-                        </div>
-                    </div>
+                            <dt class="col-sm-2">Phone</dt>
+                            <dd class="col-sm-9">{{$user->phone}}</dd>
+                        </dl>
+                            
                 </div>
             </div>
         </div>

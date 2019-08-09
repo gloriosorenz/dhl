@@ -129,6 +129,14 @@
                     }
                 ]
             });
+            $('#for_approval_table').DataTable({
+                pageLength: 10,
+                order: [[ 0, 'desc' ]],
+            });
+            $('#approved_table').DataTable({
+                pageLength: 10,
+                order: [[ 0, 'desc' ]],
+            });
             $('#brands_table').DataTable({
                 pageLength: 10,
                 order: [[ 1, 'asc' ]],

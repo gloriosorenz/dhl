@@ -108,9 +108,6 @@
                             <div class="col-md-6">
                                 <h6 class="m-0 font-weight-bold text-primary">Active Equipment</h6>
                             </div>
-                            {{-- <div class="col-md-6">
-                                <a href="{{ route('accountability_forms.create') }}" class="btn btn-sm btn-success shadow-sm float-right"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Create Form</a>
-                            </div> --}}
                         </div>
                     </div>
                     <!-- Table Body -->
@@ -125,7 +122,6 @@
                                             <th width="">Equipment</th>
                                             <th width="">IT Asset Tag</th>
                                             <th width="">Date Issued</th>
-                                            {{-- <th class="text-center">Options</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -136,10 +132,6 @@
                                             <td>{{ $item->equipment->name }}</td>
                                             <td>{{ $item->equipment->it_tag }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
-                                            {{-- <td class="text-center">
-                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
-                                                <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
-                                            </td> --}}
                                         </tr>
                                         @endforeach
                                     @else

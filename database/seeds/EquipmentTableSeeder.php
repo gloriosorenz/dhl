@@ -45,7 +45,7 @@ class EquipmentTableSeeder extends Seeder
 
                 'brands_id' => 1, // HP
                 'equipment_types_id' => 1, // Laptop
-                'equipment_statuses_id' => 3, // Inactive
+                'equipment_statuses_id' => 1, // Active
 
             ],
 
@@ -70,7 +70,7 @@ class EquipmentTableSeeder extends Seeder
             [
                 'id' => 4, 
                 'name' => 'Samsung J2 Prime',
-                'it_tag' => '',
+                'it_tag' => 'E0200',
                 'asset_tag' => '',
                 'specifications' => 'Single / Dual-SIM 1.5GB RAM 8GB internal storage, expandable up to 256GB via microSD',
                 'serial_number' => '352405097168509', 
@@ -93,7 +93,35 @@ class EquipmentTableSeeder extends Seeder
 
                 'brands_id' => 6, // Samsung
                 'equipment_types_id' => 2, // Phone
-                'equipment_statuses_id' => 1, // Active
+                'equipment_statuses_id' => 3, // Inactive
+            ],
+            [
+                'id' => 5, 
+                'name' => 'Samsung J2 Prime',
+                'it_tag' => 'E0201',
+                'asset_tag' => '',
+                'specifications' => 'Single / Dual-SIM 1.5GB RAM 8GB internal storage, expandable up to 256GB via microSD',
+                'serial_number' => '352405097168509', 
+                'unit_cost' => null,
+                'date_purchased' => null, 
+                'date_issued' => '2019-03-01',
+                // 'quantity' => 14,
+                // 'active' => true,
+
+                'plan' => '800',
+                'calls' => 'Unli calls to Smart/Sun',
+                'text' => 'Unli text to Smart/Sun',
+                'local_calls' => 'per usage',
+                'local_text' => '150 text to all networks',
+                'consumable' => 'none',
+                'ndd' => 'per usage',
+                'idd' => 'per usage',
+                'data' => '3GB',
+                'roaming' => 'none',
+
+                'brands_id' => 6, // Samsung
+                'equipment_types_id' => 2, // Phone
+                'equipment_statuses_id' => 3, // Inactive
             ],
 
         ];

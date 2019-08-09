@@ -32,21 +32,23 @@
                             @if(count($users) > 0)
                             <thead>
                                 <tr>
-                                    <th width="">ID</th>
-                                    <th width="">Name</th>
-                                    <th width="">Email</th>
-                                    <th width="">Phone</th>
-                                    <th width="">Options</th>
-                                    <th width="">Roles</th>
+                                    <th class="text-center" width="">ID</th>
+                                    <th class="text-center" width="20%">Name</th>
+                                    {{-- <th class="text-center" width="">Email</th> --}}
+                                    <th class="text-center" width="">Phone</th>
+                                    <th class="text-center" width="">Department</th>
+                                    <th class="text-center" width="">Role</th>
+                                    <th class="text-center" width="15%">Options</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                                 @foreach($users as $user)
                                 <tr class='clickable-row' data-href='/users/{{$user->id}}'>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    {{-- <td>{{ $user->email }}</td> --}}
                                     <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->departments->name }}</td>
                                     <td>{{ $user->roles->title }}</td>
                                     <td>
                                         <a href="/users/{{$user->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

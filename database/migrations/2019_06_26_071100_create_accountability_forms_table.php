@@ -16,7 +16,7 @@ class CreateAccountabilityFormsTable extends Migration
         Schema::create('accountability_forms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('af_num')->unique()->nullable();
-            $table->string('designation');
+            $table->string('designation')->nullable();
             $table->date('issued_date');
             
             $table->integer('request_forms_id')->unsigned()->nullable();
