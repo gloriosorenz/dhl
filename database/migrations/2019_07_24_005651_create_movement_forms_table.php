@@ -15,7 +15,7 @@ class CreateMovementFormsTable extends Migration
     {
         Schema::create('movement_forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('remarks');
+            $table->text('remarks')->nullable();
             $table->string('mf_num');
             $table->date('prepared_date')->nullable();
 

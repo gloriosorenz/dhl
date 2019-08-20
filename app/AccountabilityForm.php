@@ -16,7 +16,6 @@ class AccountabilityForm extends Model
         'issued_date',
         'admins_id',
         'employees_id',
-        'request_forms_id',
         'equipment_id',
         'form_statuses_id',
     ];
@@ -30,11 +29,6 @@ class AccountabilityForm extends Model
     public function admins()
     {
         return $this->belongsTo(User::class, 'admins_id');
-    }
-
-    public function request_forms()
-    {
-        return $this->belongsTo(RequestForm::class, 'request_forms_id');
     }
 
     public function equipment()

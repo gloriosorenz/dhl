@@ -19,7 +19,6 @@ class CreateAccountabilityFormsTable extends Migration
             $table->string('designation')->nullable();
             $table->date('issued_date');
             
-            $table->integer('request_forms_id')->unsigned()->nullable();
             $table->integer('form_statuses_id')->unsigned()->nullable();
             $table->integer('departments_id')->unsigned()->nullable();
             $table->integer('equipment_id')->unsigned()->nullable();

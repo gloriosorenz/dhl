@@ -65,6 +65,12 @@ class AccountabilityFormsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'employees_id' => 'required',
+            'equipment_id' => 'required',
+        ]);
+
         $af_num = randomNumber();
 
         // Check for duplicates
@@ -80,7 +86,6 @@ class AccountabilityFormsController extends Controller
 
         // Create new accountability form
         $af = new AccountabilityForm;
-        $af->request_forms_id = $request->get('request_forms_id');
         $af->equipment_id = $request->get('equipment_id');
         $af->af_num = $af_num;
         // $af->designation = $request->get('designation');

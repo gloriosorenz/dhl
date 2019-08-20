@@ -29,7 +29,7 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -40,7 +40,17 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate([
+            'name' => 'required|string|max:255',
+            // 'narrative' => 'required|string|max:255',
+        ]);
+
+        $department = new Department;
+        $department->name = $request->get('name');
+        $department->save();
+
+        return redirect()->route('departments.index')->with('success','Department Created ');
     }
 
     /**
@@ -85,6 +95,25 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = Department::findOrFail($id);
+        $department->delete();
+  
+        return redirect()->route('departments.index')
+                        ->with('success','Department Removed');
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $department = Department::find($id);
+  
+        return view('departments.delete')
+                ->with('department',$department);
     }
 }

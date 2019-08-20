@@ -38,7 +38,7 @@
                         <tbody>
                             <tr class="tr">
                                 <td class="text-center">
-                                    <select class="form-control select2_demo_1" name="employees_id">
+                                    <select class="form-control select2_demo_1" name="employees_id" required>
                                         <option value="0" selected="true" disabled="True">Select User</option>
                                         @foreach ($employees as $item)
                                             <option value="{{ $item['id']}}">{{ $item['first_name']}} {{ $item['last_name']}}</option>
@@ -46,7 +46,7 @@
                                     </select>
                                 </td>
                                 <td class="text-center">
-                                    <select class="form-control select2_demo_1" name="equipment_id">
+                                    <select class="form-control select2_demo_1" name="equipment_id" required>
                                         <option value="0" selected="true" disabled="True">Select Equipment</option>
                                         @foreach ($equipment as $type)
                                             <option value="{{ $type['id']}}">{{ $type['name']}} - {{ $type['it_tag']}}</option>

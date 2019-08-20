@@ -37,11 +37,15 @@ Route::group( ['middleware' => 'auth' ], function()
     // Route::get('/accountability_forms/{id}/edit','AccountabilityFormsController@edit');
 
    
+    // Delete page
+    Route::get('/equipment/{id}/delete','EquipmentController@delete');
+    Route::get('/departments/{id}/delete','DepartmentsController@delete');
+    Route::get('/brands/{id}/delete','BrandsController@delete');
+
 
 
     Route::resource('users', 'UsersController');
     Route::resource('equipment', 'EquipmentController');
-    Route::resource('requests', 'RequestsController');
     Route::resource('accountability_forms', 'AccountabilityFormsController');
     Route::resource('movement_forms', 'MovementFormsController');
     Route::resource('brands', 'BrandsController');

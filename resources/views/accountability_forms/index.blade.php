@@ -49,10 +49,11 @@
                                                     <th class="text-center" width="auto">Equipment</th>
                                                     <th class="text-center" width="auto">IT Asset Tag</th>
                                                     <th class="text-center" width="auto">Date Issued</th>
-                                                    {{-- <th class="text-center" width="auto">Status</th> --}}
                                                     <th class="text-center" width="15%">Options</th>
                                                     <th class="text-center" width="auto">Download</th>
+                                                    @if (auth()->user()->roles->id == 1)
                                                     <th class="text-center" width="auto">Aprrove</th>
+                                                    @endif
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -63,25 +64,20 @@
                                                     <td>{{ $item->equipment->name }}</td>
                                                     <td>{{ $item->equipment->it_tag }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
-                                                    {{-- <td>
-                                                        <span class="badge badge-warning">{{ $item->form_statuses->status }}</span>
-                                                    </td> --}}
                                                     <td class="text-center">
                                                         <a href="/accountability_forms/{{$item->id}}" class="btn btn-md btn-warning"> <i class="fas fa-eye fa-sm text-white"></i></a>
                                                         <a href="/accountability_forms/{{$item->id}}/edit" class="btn btn-md btn-success"> <i class="fas fa-edit fa-sm text-white"></i></a>
                                                         <a href="/accountability_forms/cancelForm/{{$item->id}}" class="btn btn-danger"><i class="fas fa-times"></i></a>
-                                                        {{-- <form action="{{ route('accountability_forms.destroy',$item->id ?? 'Not set') }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
-                                                        </form> --}}
                                                     </td>
                                                     <td>
                                                         <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
                                                     </td>
+                                                    @if (auth()->user()->roles->id == 1)
                                                     <td>
                                                         <a href="/accountability_forms/approveForm/{{$item->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
-                                                    </td>
+                                                    </td> 
+                                                    @endif
+                                                   
                                                 </tr>
                                                 @endforeach
                                             @else
@@ -179,10 +175,7 @@
                                                     <th class="text-center" width="">Equipment</th>
                                                     <th class="text-center" width="">IT Asset Tag</th>
                                                     <th class="text-center" width="">Date Issued</th>
-                                                    {{-- <th class="text-center" width="">Status</th> --}}
                                                     <th class="text-center" width="13%">Options</th>
-                                                    {{-- <th class="text-center" width="">Download</th> --}}
-                                                    {{-- <th class="text-center" width="">Transfer</th> --}}
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -193,19 +186,9 @@
                                                     <td>{{ $item->equipment->name }}</td>
                                                     <td>{{ $item->equipment->it_tag }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($item->issued_date)->format('F j, Y')}}</td>
-                                                    {{-- <td>
-                                                        <span class="badge badge-danger">{{ $item->form_statuses->status }}</span>
-                                                    </td> --}}
                                                     <td class="text-center">
                                                         <a href="/accountability_forms/{{$item->id}}" class="btn btn-md btn-warning"> <i class="fas fa-eye fa-sm text-white"></i></a>
-                                                        {{-- <a href="/accountability_forms/{{$item->id}}/edit" class="btn btn-md btn-success"> <i class="fas fa-edit fa-sm text-white"></i></a> --}}
                                                     </td>
-                                                    {{-- <td>
-                                                        <a href="pdf/accountability_form/{{$item->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="/movement_forms/{{$item->id}}/create" class="btn btn-md btn-info"> <i class="fas fa-exchange-alt fa-sm text-white"></i></a>
-                                                    </td> --}}
                                                 </tr>
                                                 @endforeach
                                             @else

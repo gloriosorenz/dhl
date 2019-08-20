@@ -8,7 +8,6 @@
         <h1 class="h3 mb-0 text-gray-800">Create an Employee</h1>
     </div>
 
-    <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 
 
     <div class="row">
@@ -71,20 +70,6 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <!-- Roles -->
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Roles</label>
-                                    <select class="form-control select2_demo_1" name="roles_id">
-                                        <option value="0" selected="true" disabled="True">Select Role</option>
-                                        @foreach ($roles as $item)
-                                            <option value="{{ $item['id']}}">{{ $item['title']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <!-- Email -->
@@ -96,6 +81,21 @@
                             <div class="col-sm-6 form-group">
                                 <label>Phone</label>
                                 <input class="form-control" type="text" placeholder="Enter number" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Roles -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Role</label>
+                                    <select class="form-control select2_demo_1" name="roles_id">
+                                        <option value="0" selected="true" disabled="True">Select Role</option>
+                                        @foreach ($roles as $item)
+                                            <option value="{{ $item['id']}}">{{ $item['title']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -128,8 +128,8 @@
                         <hr>
                         <!-- Buttons -->
                         <div class="form-group">
-                            <a href="{{URL::previous()}}" class="btn btn-danger" type="submit">Cancel</a>
-                            <button class="btn btn-success" type="submit">+ Create</button>
+                            <a href="{{route('users.index')}}" class="btn btn-danger" type="submit">Cancel</a>
+                            <button class="btn btn-success" type="submit">Create</button>
                         </div>
                     </form>
                     <!-- End Form -->

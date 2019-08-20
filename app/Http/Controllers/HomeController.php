@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\AccountabilityForm;
 use App\MovementForm;
+use App\Equipment;
 
 class HomeController extends Controller
 {

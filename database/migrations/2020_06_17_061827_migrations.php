@@ -35,18 +35,8 @@ class Migrations extends Migration
                 ->references('id')->on('equipment_types')->onDelete('cascade');
         });
 
-        // Request
-        Schema::table('request_forms',function(Blueprint $table){
-            $table->foreign('equipment_id')
-                ->references('id')->on('equipment')->onDelete('cascade');
-            $table->foreign('users_id')
-                ->references('id')->on('users')->onDelete('cascade');
-        });
-
         // Accountability Form
         Schema::table('accountability_forms',function(Blueprint $table){
-            $table->foreign('request_forms_id')
-                ->references('id')->on('request_forms')->onDelete('cascade');
             $table->foreign('equipment_id')
                 ->references('id')->on('equipment')->onDelete('cascade');
             $table->foreign('departments_id')

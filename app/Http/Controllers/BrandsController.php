@@ -172,4 +172,18 @@ class BrandsController extends Controller
         return redirect()->route('brands.index')
                         ->with('success','Brand Removed');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $brand = Brand::find($id);
+  
+        return view('brands.delete')
+                ->with('brand',$brand);
+    }
 }

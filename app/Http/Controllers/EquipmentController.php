@@ -150,4 +150,19 @@ class EquipmentController extends Controller
         return redirect()->route('equipment.index')
                         ->with('success','Equipment Removed');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $equipment = Equipment::findOrFail($id);
+        // $equipment->delete();
+  
+        return view('equipment.delete')
+                ->with('equipment',$equipment);
+    }
 }

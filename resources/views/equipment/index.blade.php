@@ -60,10 +60,7 @@
                                         <td>
                                             <a href="/equipment/{{$e->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                                             <a href="/equipment/{{$e->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                                            
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                                    <i class="fas fa-times"></i>
-                                            </button>
+                                            <a href="/equipment/{{$e->id}}/delete" class="btn btn-danger"><i class="fas fa-times"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

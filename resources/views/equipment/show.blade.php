@@ -17,8 +17,16 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Equipment Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Equipment Info</h6>
                         </div>
+                        <div class="col-md-6">
+                            @if ($equipment->equipment_statuses->id == 1)
+                                <span class="badge badge-success float-right">{{$equipment->equipment_statuses->status}}</span>
+                            @elseif ($equipment->equipment_statuses->id == 2)
+                                <span class="badge badge-warning float-right">{{$equipment->equipment_statuses->status}}</span>
+                            @elseif ($equipment->equipment_statuses->id == 3)
+                                <span class="badge badge-danger float-right">{{$equipment->equipment_statuses->status}}</span>
+                            @endif                        </div>
                     </div>
                 </div>
                 <!-- Table Body -->
@@ -27,86 +35,86 @@
                     @if ($equipment->equipment_types->id != 2)
 
                         <dl class="row">
-                            <dt class="col-sm-2">Name</dt>
+                            <dt class="col-sm-3">Name</dt>
                             <dd class="col-sm-9">{{$equipment->name}}</dd>
                             
-                            <dt class="col-sm-2">Brand</dt>
+                            <dt class="col-sm-3">Brand</dt>
                             <dd class="col-sm-9">{{$equipment->brands->name}}</dd>
                             
-                            <dt class="col-sm-2">Specifications</dt>
+                            <dt class="col-sm-3">Specifications</dt>
                             <dd class="col-sm-9">{{$equipment->specifications}}</dd>
                             
-                            <dt class="col-sm-2">Serial Number</dt>
+                            <dt class="col-sm-3">Serial Number</dt>
                             <dd class="col-sm-9">{{$equipment->serial_number}}</dd>
 
-                            <dt class="col-sm-2">IT Tag</dt>
+                            <dt class="col-sm-3">IT Tag</dt>
                             <dd class="col-sm-9">{{$equipment->it_tag}}</dd>
 
-                            <dt class="col-sm-2">Unit Cost</dt>
+                            <dt class="col-sm-3">Unit Cost</dt>
                             <dd class="col-sm-9">{{$equipment->unit_cost}}</dd>
 
-                            <dt class="col-sm-2">Date Purchased</dt>
-                            <dd class="col-sm-9">{{$equipment->date_purchased}}</dd>
+                            <dt class="col-sm-3">Date Purchased</dt>
+                            <dd class="col-sm-9">{{\Carbon\Carbon::parse($equipment->date_purchased)->format('F j, Y')}}</dd>
 
-                            <dt class="col-sm-2">Date Issued</dt>
-                            <dd class="col-sm-9">{{$equipment->date_issued}}</dd>
+                            <dt class="col-sm-3">Date Issued</dt>
+                            <dd class="col-sm-9">{{\Carbon\Carbon::parse($equipment->date_issued)->format('F j, Y')}}</dd>
                         </dl>
 
                     <!-- If equipment is phone -->
                     @elseif($equipment->equipment_types->id == 2)
 
                         <dl class="row">
-                            <dt class="col-sm-2">Name</dt>
+                            <dt class="col-sm-3">Name</dt>
                             <dd class="col-sm-9">{{$equipment->name}}</dd>
                             
-                            <dt class="col-sm-2">Brand</dt>
+                            <dt class="col-sm-3">Brand</dt>
                             <dd class="col-sm-9">{{$equipment->brands->name}}</dd>
                             
-                            <dt class="col-sm-2">Specifications</dt>
+                            <dt class="col-sm-3">Specifications</dt>
                             <dd class="col-sm-9">{{$equipment->specifications}}</dd>
                             
-                            <dt class="col-sm-2">Serial Number</dt>
+                            <dt class="col-sm-3">Serial Number</dt>
                             <dd class="col-sm-9">{{$equipment->serial_number}}</dd>
 
-                            <dt class="col-sm-2">Unit Cost</dt>
+                            <dt class="col-sm-3">Unit Cost</dt>
                             <dd class="col-sm-9">{{$equipment->unit_cost}}</dd>
 
-                            <dt class="col-sm-2">Date Purchased</dt>
+                            <dt class="col-sm-3">Date Purchased</dt>
                             <dd class="col-sm-9">{{$equipment->date_purchased}}</dd>
 
-                            <dt class="col-sm-2">Date Issued</dt>
+                            <dt class="col-sm-3">Date Issued</dt>
                             <dd class="col-sm-9">{{$equipment->date_issued}}</dd>
                         </dl>
 
                         <dl class="row">
-                            <dt class="col-sm-2">Plan</dt>
+                            <dt class="col-sm-3">Plan</dt>
                             <dd class="col-sm-9">{{$equipment->plan}}</dd>
                             
-                            <dt class="col-sm-2">Calls</dt>
-                            <dd class="col-sm-9">{{$equipment->brands->calls}}</dd>
+                            <dt class="col-sm-3">Calls</dt>
+                            <dd class="col-sm-9">{{$equipment->calls}}</dd>
                             
-                            <dt class="col-sm-2">Text</dt>
+                            <dt class="col-sm-3">Text</dt>
                             <dd class="col-sm-9">{{$equipment->text}}</dd>
                             
-                            <dt class="col-sm-2">Local Calls</dt>
+                            <dt class="col-sm-3">Local Calls</dt>
                             <dd class="col-sm-9">{{$equipment->local_calls}}</dd>
 
-                            <dt class="col-sm-2">Local Text</dt>
+                            <dt class="col-sm-3">Local Text</dt>
                             <dd class="col-sm-9">{{$equipment->local_text}}</dd>
 
-                            <dt class="col-sm-2">Consumable</dt>
+                            <dt class="col-sm-3">Consumable</dt>
                             <dd class="col-sm-9">{{$equipment->consumable}}</dd>
 
-                            <dt class="col-sm-2">NDD</dt>
+                            <dt class="col-sm-3">NDD</dt>
                             <dd class="col-sm-9">{{$equipment->ndd}}</dd>
 
-                            <dt class="col-sm-2">IDD</dt>
+                            <dt class="col-sm-3">IDD</dt>
                             <dd class="col-sm-9">{{$equipment->idd}}</dd>
 
-                            <dt class="col-sm-2">Data</dt>
+                            <dt class="col-sm-3">Data</dt>
                             <dd class="col-sm-9">{{$equipment->data}}</dd>
 
-                            <dt class="col-sm-2">Roaming</dt>
+                            <dt class="col-sm-3">Roaming</dt>
                             <dd class="col-sm-9">{{$equipment->roaming}}</dd>
                         </dl>
 
