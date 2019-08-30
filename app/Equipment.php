@@ -17,6 +17,7 @@ class Equipment extends Model
         'date_issued', 
         // 'quantity', 
         // 'active',
+        'notes',
 
         'plan', 
         'calls', 

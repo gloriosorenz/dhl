@@ -63,6 +63,16 @@ class Migrations extends Migration
                     ->references('id')->on('reason_codes')->onDelete('cascade');
         });
 
+         // Inquiry
+         Schema::table('inquiries',function(Blueprint $table){
+            $table->foreign('inquiry_statuses_id')
+                    ->references('id')->on('inquiry_statuses')->onDelete('cascade');
+            $table->foreign('employees_id')
+                    ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('admins_id')
+                    ->references('id')->on('users')->onDelete('cascade');
+        });
+
     }
 
     /**

@@ -77,7 +77,10 @@ class EquipmentController extends Controller
         $equipment->date_purchased = Carbon::parse($request->date_purchased);
         $equipment->date_issued = Carbon::parse($request->date_issued);
         // $equipment->quantity = $request->get('quantity');
-        $equipment->active = false;
+        // $equipment->active = false;
+        $equipment->notes = $request->get('notes');
+
+        $equipment->equipment_statuses_id = 3; // Equipment will be inactive when added.
 
         // For phone
         $equipment->plan = $request->get('plan');
@@ -121,7 +124,25 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $equipment = Equipment::findOrFail($id);
+        // $acc_forms = AccountabilityForm::where('equipment_id', $id)->get();
+        $equipment_types = EquipmentType::where('id','!=', 2)->get();
+        $laptop_brands = Brand::where('equipment_types_id', 1)->get();
+        $phone_brands = Brand::where('equipment_types_id', 2)->get();
+        $rf_gun_brands = Brand::where('equipment_types_id', 3)->get();
+        $desktop_brands = Brand::where('equipment_types_id', 4)->get();
+        $external_drive_brands = Brand::where('equipment_types_id', 5)->get();
+
+        return view('equipment.edit')
+            ->with('equipment', $equipment)
+            // ->with('acc_forms', $acc_forms)
+            ->with('equipment_types', $equipment_types)
+            ->with('laptop_brands', $laptop_brands)
+            ->with('phone_brands', $phone_brands)
+            ->with('rf_gun_brands', $rf_gun_brands)
+            ->with('desktop_brands', $desktop_brands)
+            ->with('external_drive_brands', $external_drive_brands)
+            ;
     }
 
     /**
@@ -133,7 +154,41 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipment = Equipment::findOrFail($id);
+
+        // For laptop, RF gun, desktop, external drive
+        $equipment->equipment_types_id = $request->get('equipment_types_id');
+        $equipment->it_tag = $request->get('it_tag');
+        $equipment->asset_tag = $request->get('asset_tag');
+        $equipment->name = $request->get('name');
+        $equipment->brands_id = $request->get('brands_id');
+        $equipment->specifications = $request->get('specifications');
+        $equipment->serial_number = $request->get('serial_number');
+        $equipment->unit_cost = $request->get('unit_cost');
+        $equipment->date_purchased = Carbon::parse($request->date_purchased);
+        $equipment->date_issued = Carbon::parse($request->date_issued);
+        // $equipment->quantity = $request->get('quantity');
+        // $equipment->active = false;
+        $equipment->notes = $request->get('notes');
+
+        // $equipment->equipment_statuses_id = 3; // Equipment will be inactive when added.
+
+        // For phone
+        $equipment->plan = $request->get('plan');
+        $equipment->calls = $request->get('calls');
+        $equipment->text = $request->get('text');
+        $equipment->local_calls = $request->get('local_calls');
+        $equipment->local_text = $request->get('local_text');
+        $equipment->consumable = $request->get('consumable');
+        $equipment->ndd = $request->get('ndd');
+        $equipment->idd = $request->get('idd');
+        $equipment->data = $request->get('data');
+        $equipment->roaming = $request->get('roaming');
+        $equipment->save();
+
+
+
+        return redirect()->route('equipment.index')->with('success','Equipment Updated ');
     }
 
     /**

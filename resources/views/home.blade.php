@@ -6,9 +6,14 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
         </div>
 
+
+        <!-- IT Administrator Dashboard -->
+        @if (auth()->user()->roles->id == 1 || auth()->user()->roles->id == 2)
+            
+        
         <!-- Content Row -->
         <div class="row">
 
@@ -97,7 +102,6 @@
         </div>
 
         <!-- Content Row -->
-
         <div class="row">
             <div class="col-lg-6">
                 <!-- Accountability Forms Table -->
@@ -106,7 +110,7 @@
                     <div class="card-header py-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <h6 class="m-0 font-weight-bold text-primary">Active Equipment</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">For Approval</h6>
                             </div>
                         </div>
                     </div>
@@ -114,7 +118,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                                 <table id="accountability_forms_table" class="table table-bordered table-hover">
-                                    @if(count($acc_forms) > 0)
+                                    @if(count($for_approval) > 0)
                                     <thead>
                                         <tr>
                                             <th width="">ID</th>
@@ -125,7 +129,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($acc_forms as $item)
+                                        @foreach($for_approval as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
@@ -139,7 +143,7 @@
                                     @endif
                                 </table>
                                 <div class="float-right">
-                                    {{ $acc_forms->links() }}
+                                    {{-- {{ $for_app->links() }} --}}
                                 </div>
                         </div>
                     </div>
@@ -201,6 +205,221 @@
                 </div>
             </div>
         </div>
+
+        <!-- HR Administrator Dashboard -->
+        @elseif(auth()->user()->roles->id == 3)
+
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Inquiries Table -->
+                <div class="card shadow mb-4">
+                    <!-- Table Header -->
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="m-0 font-weight-bold text-primary">Requests / Inquiries</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Body -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                                <table id="inquiries_table" class="table table-bordered table-hover">
+                                    @if(count($inquiries) > 0)
+                                    <thead>
+                                        <tr>
+                                            <th width="">ID</th>
+                                            <th width="">Employee</th>
+                                            <th width="">Subject</th>
+                                            <th width="">Date Inquired</th>
+                                            <th width="">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($inquiries as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->employees->first_name }} {{ $item->employees->last_name }}</td>
+                                            <td>{{ $item->subject }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->date_inquired)->format('F j, Y')}}</td>
+                                            <td>{{ $item->inquiry_statuses->status }}</td>
+                                        </tr>
+                                        @endforeach
+                                    @else
+                                        <p>No forms found</p>
+                                    @endif
+                                </table>
+                                <div class="float-right">
+                                    {{ $inquiries->links() }}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Messages Table -->
+                <div class="card shadow mb-4">
+                    <!-- Table Header -->
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="m-0 font-weight-bold text-primary">Messages</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table Body -->
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Dashboard -->
+        @elseif(auth()->user()->roles->id == 4)
+        <!-- Content Row -->
+        {{-- <div class="row">
+
+            <!-- Create a request -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a href="{{ route('accountability_forms.create') }}" data-toggle="modal" data-target=".bd-example-modal-lg">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Inquire</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Create an Inquiry</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-question-circle fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+        </div> --}}
+
+
+        <!-- Create Inquiry -->
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Start Form -->
+                <form method="POST" action="{{action('InquiriesController@store')}}" enctype="multipart/form-data">
+                  @csrf 
+
+                  <!-- Inquiry Card -->
+                  <div class="card shadow mb-4">
+                      <!-- Table Header -->
+                      <div class="card-header py-3">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <h6 class="m-0 font-weight-bold text-primary">Inquire</h6>
+                              </div>
+                          </div>
+                      </div>
+                    
+                      <!-- Table Body -->
+                      <div class="card-body">
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Subject:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="subject">
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text" name="inquiry"></textarea>
+                          </div>
+                      </div>
+                      <div class="card-footer">
+                          <button type="submit" class="btn btn-success float-right">Submit</button>
+                      </div>
+                  </div>
+
+                </form> 
+                <!-- End Form -->
+            </div>
+
+
+        </div>
+
+        <!-- Create inquiry modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+
+            <form method="POST" action="{{action('InquiriesController@store')}}" enctype="multipart/form-data">
+              @csrf 
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New inquiry</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Subject:</label>
+                      <input type="text" class="form-control" id="recipient-name" name="subject">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="message-text" name="inquiry"></textarea>
+                    </div>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+
+
+
+        <!-- FAQs -->
+        <div class="row">
+            <div class="col-lg-6">
+                  <!-- FAQs Card -->
+                  <div class="card shadow mb-4">
+                      <!-- Table Header -->
+                      <div class="card-header py-3">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <h6 class="m-0 font-weight-bold text-primary">FAQs</h6>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Table Body -->
+                      <div class="card-body">
+                          @foreach ($questions as $item)
+                              <a href="#" id="question">{{$item->question}}</a>
+                              <p id="answer">{{$item->answer}}</p>
+                          @endforeach
+                      </div>
+                  </div>
+            </div>
+        </div>
+            
+        @endif
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+          $(document).ready(function(){
+            $("#question").click(function(){
+              $("#answer").toggle();
+            });
+          });
+        </script>
+
+
+
+
+
 
         {{-- <div class="row">
 
@@ -271,11 +490,6 @@
             </div>
           </div>
         </div> --}}
-
-
-
-
-
 
         <!-- Content Row -->
         {{-- <div class="row">

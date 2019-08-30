@@ -62,7 +62,7 @@ class UsersController extends Controller
             // 'name' => 'required|min:3|max:50',
             'email' => 'email',
             'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6'
+            'password_confirmation' => 'min:6',
         ]);
 
         $user = new User;

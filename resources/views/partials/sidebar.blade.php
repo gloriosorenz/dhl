@@ -8,7 +8,7 @@
         </div>
     </a>
 
-    <!-- Head Admininistrator Functionalities -->
+    <!-- Head Admininistrator Functionalities (IT Head)-->
     @if(Auth::user()->roles_id == 1)
 
     <!-- Divider -->
@@ -47,13 +47,6 @@
     <div class="sidebar-heading">
         Functions
     </div>
-    
-    <!-- Requests -->
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ route('requests.index') }}">
-        <i class="fas fa-fw fa-question-circle"></i>
-        <span>Requests</span></a>
-    </li> --}}
 
     <!-- Users/Employees -->
     <li class="nav-item">
@@ -94,7 +87,7 @@
 
 
 
-    <!-- Administrator Functionalities -->
+    <!-- Administrator Functionalities (IT Staff)-->
     @elseif(Auth::user()->roles_id == 2)
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -159,6 +152,81 @@
         <a class="nav-link" href="{{ route('departments.index') }}">
         <i class="fas fa-fw fa-building"></i>
         <span>Departments</span></a>
+    </li>
+
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
+    <!-- HR Functionalities (HR administrator)-->
+    @elseif(Auth::user()->roles_id == 3)
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('home') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Functions
+    </div>
+
+    <!-- Departments -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('inquiries.index') }}">
+        <i class="fas fa-fw fa-question-circle"></i>
+        <span>Inquiries</span></a>
+    </li>
+
+    <!-- Questions -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('questions.index') }}">
+        <i class="fas fa-fw fa-question-circle"></i>
+        <span>FAQs</span></a>
+    </li>
+
+
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
+    <!-- Employees Functionalities (HR administrator)-->
+    @elseif(Auth::user()->roles_id == 4)
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('home') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Functions
+    </div>
+
+    <!-- Inquiries -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('inquiries.index') }}">
+        <i class="fas fa-fw fa-info-circle"></i>
+        <span>Inquiries</span></a>
+    </li>
+
+    <!-- Questions -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('questions.index') }}">
+        <i class="fas fa-fw fa-question-circle"></i>
+        <span>FAQs</span></a>
     </li>
 
 

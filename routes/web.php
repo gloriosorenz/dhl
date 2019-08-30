@@ -43,6 +43,8 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::get('/brands/{id}/delete','BrandsController@delete');
 
 
+    Route::get('/inquiries/complete/{id}', 'InquiriesController@complete');
+
 
     Route::resource('users', 'UsersController');
     Route::resource('equipment', 'EquipmentController');
@@ -50,5 +52,7 @@ Route::group( ['middleware' => 'auth' ], function()
     Route::resource('movement_forms', 'MovementFormsController');
     Route::resource('brands', 'BrandsController');
     Route::resource('departments', 'DepartmentsController');
+    Route::resource('inquiries', 'InquiriesController');
+    Route::resource('questions', 'QuestionsController');
 
 });

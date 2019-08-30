@@ -58,6 +58,9 @@
 
                             <dt class="col-sm-3">Date Issued</dt>
                             <dd class="col-sm-9">{{\Carbon\Carbon::parse($equipment->date_issued)->format('F j, Y')}}</dd>
+
+                            <dt class="col-sm-3">Notes</dt>
+                            <dd class="col-sm-9">{{$equipment->notes}}</dd>
                         </dl>
 
                     <!-- If equipment is phone -->
@@ -116,6 +119,9 @@
 
                             <dt class="col-sm-3">Roaming</dt>
                             <dd class="col-sm-9">{{$equipment->roaming}}</dd>
+
+                            <dt class="col-sm-3">Notes</dt>
+                            <dd class="col-sm-9">{{$equipment->notes}}</dd>
                         </dl>
 
                     @endif
@@ -163,7 +169,7 @@
                                     </tr>
                                     @endforeach
                                 @else
-                                    <p>No equipment found</p>
+                                    <p>No employee found</p>
                                 @endif
                             </table>
                     </div>

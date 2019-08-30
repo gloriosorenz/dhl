@@ -34,7 +34,7 @@
                         </thead>
                         <tbody>
                             <tr class="tr">
-                                <td class="text-center">
+                                <td class="text-center" style="barcode font">
                                     <input class="form-control" type="text" value="{{$af->employees->first_name}} {{$af->employees->last_name}}" readonly/>
                                 </td>
                                 <td class="text-center">

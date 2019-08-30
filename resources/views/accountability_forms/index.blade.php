@@ -6,7 +6,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Accountability Forms </h1>
-        <a href="{{ route('accountability_forms.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        {{-- <a href="{{ route('accountability_forms.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
 
     <div class="row">
@@ -115,7 +115,7 @@
                                                     <th class="text-center" width="">Date Issued</th>
                                                     {{-- <th class="text-center" width="">Status</th> --}}
                                                     <th class="text-center" width="13%">Options</th>
-                                                    <th class="text-center" width="">Download</th>
+                                                    <th class="text-center" width="">Download PDF</th>
                                                     <th class="text-center" width="">Transfer</th>
                                                 </tr>
                                             </thead>

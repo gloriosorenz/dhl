@@ -26,6 +26,7 @@ class CreateEquipmentTable extends Migration
             $table->date('date_issued')->nullable();
             // $table->integer('quantity')->nullable();
             // $table->boolean('active')->nullable();
+            $table->string('notes')->nullable();
 
             $table->string('plan')->nullable();
             $table->string('calls')->nullable();

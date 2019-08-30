@@ -81,8 +81,8 @@ class MovementFormsController extends Controller
         $af->save();
 
 
-        // Creates new Accountability form if it transfers to a new employee
-        if($mf->reason_codes->id == 1){
+        // PT: Permanent Transfer or SU: Service Unit - Creates new Accountability form if it transfers to a new employee
+        if($mf->reason_codes->id == 1 || $mf->reason_codes->id == 2){
             $new_af =  new AccountabilityForm;
             $new_af->equipment_id = $mf->accountability_forms->equipment->id;
             // $new_af->af_num = $af_num;
@@ -97,10 +97,13 @@ class MovementFormsController extends Controller
 
             $new_af->save();
         }
+
+        // RE: Resigned or DS: For Disposal - the equipment status will now be available
+        elseif($mf->reason_codes->id == 3 || $mf->reason_codes->id == 4){
+            $af->equipment->equipment_statuses->id == 3;
+        }
         
 
-        // Updates equipment status
-        // $mf->equipment->update(['equipment_statuses_id' => 2]);   // becomes requested
 
  
         return redirect()->route('accountability_forms.index')->with('success','Accountability Form Created ');
@@ -149,5 +152,22 @@ class MovementFormsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    // PDF Generation
+    public function pdfview(Request $request, $id)
+    {
+
+        $af = AccountabilityForm::findOrFail($id);
+
+
+
+
+        // pass view file
+        $pdf = PDF::loadView('partials.pdf.accountability_form', compact('af'))->setPaper('a4', 'portrait');
+
+        // download pdf
+        return $pdf->stream('acountability_form.pdf');
     }
 }

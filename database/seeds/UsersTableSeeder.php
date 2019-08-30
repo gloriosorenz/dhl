@@ -105,11 +105,11 @@ class UsersTableSeeder extends Seeder
                 'first_name' => 'Miguel', 
                 'last_name' => 'Vargas', 
                 'email' => 'miguel@gmail.com', 
-                'phone' => null,
+                'phone' => '09176558739',
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'IT',
-                'roles_id' => 3, 
+                'roles_id' => 4, 
                 'departments_id' => 1,
             ],
             [
@@ -121,7 +121,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'Intern',
-                'roles_id' => 3, 
+                'roles_id' => 4, 
                 'departments_id' => 1,
             ],
             [
@@ -133,8 +133,21 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('12345678'), 
                 'remember_token' => '',
                 'position' => 'Marketing',
-                'roles_id' => 3, 
+                'roles_id' => 4, 
                 'departments_id' => 2,
+            ],
+            //HR Administrators
+            [
+                'id' => 11, 
+                'first_name' => 'HR', 
+                'last_name' => 'Administrator', 
+                'email' => 'hr_admin@gmail.com', 
+                'phone' => '09153345619',
+                'password' => Hash::make('12345678'), 
+                'remember_token' => '',
+                'position' => 'HR Administrator',
+                'roles_id' => 3, 
+                'departments_id' => 3,
             ],
 
         ];

@@ -165,6 +165,14 @@
                                         </div>
                                     </div>
 
+                                    <!-- Notes -->
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label for="exampleFormControlTextarea1">Notes:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="notes"></textarea>
+                                        </div>
+                                    </div>
+
                                     {{-- <div class="row">
                                         <!-- Quantity -->
                                         <div class="col-sm-6 form-group">
@@ -353,11 +361,19 @@
                                     </div>
 
 
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <!-- Quantity -->
                                         <div class="col-sm-6 form-group">
                                             <label>Quantity</label>
                                             <input class="form-control" type="number" placeholder="0" step="1" min="1" name="quantity">
+                                        </div>
+                                    </div> --}}
+
+                                    <!-- Notes -->
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <label for="exampleFormControlTextarea1">Notes:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="notes"></textarea>
                                         </div>
                                     </div>
 
